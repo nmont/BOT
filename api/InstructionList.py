@@ -14,9 +14,9 @@ class InstructionList:
         self.on_left = False
 
     def append_instruction(self, instruction):
-        if type(instruction) != Instruction:
-            return -1
-        elif self.on_left:
+        # if type(instruction) != Instruction.Instruction():
+        #     return -1
+        if self.on_left:
             if self.left_bumper is None:
                 self.left_bumper = InstructionList()
             self.left_bumper.append_instruction(instruction)
