@@ -17,6 +17,7 @@ HALT_1S = 11
 LED = 12
 DONE = 13
 
+
 # Takes in string file name
 # outputs fulled constructed instruction list
 def json_to_instruction_list(file_name):
@@ -33,15 +34,18 @@ def parse_instruction(string):
 
 
 def instruction_list_to_json(instructions, output_string):
-    output_string += '{\n"main":' + str(json.dumps(instructions.main_list)) + ',\n'
+    output_string += '{\n"main":' + str(instructions.main_list) + ',\n'
+    output_string += '"left": '
     if instructions.left_bumper is not None:
-        output_string += '"left": '
         output_string = instruction_list_to_json(instructions.left_bumper, output_string)
-        output_string += '\n'
+    else:
+        output_string += '{}'
+    output_string += ',\n'
+    output_string += '"right": '
     if instructions.right_bumper is not None:
-        output_string += '"right": '
         instruction_list_to_json(instructions.right_bumper, output_string)
-        output_string += '\n'
+    else:
+        output_string += '{}'
+    output_string += ',\n'
     output_string += '}'
     return output_string
-
