@@ -25,6 +25,7 @@ PROGRAM_LED_ID = 10
 PROGRAM_SWITCH_ID = 4
 GO_BUTTON_ID = 8
 PROGRAM_BUZZER_ID = 7
+INSTRUCTION_LED_ID = 0
 
 # COLORS
 RED = (255, 0, 0)
@@ -32,7 +33,6 @@ RED = (255, 0, 0)
 
 # Takes in string file name
 # outputs fulled constructed instruction list
-# TODO - Get this to work
 def json_dict_to_instruction_list(json_dict):
     instructions = InstructionList.InstructionList()
     for key, val in json_dict.iteritems():
@@ -42,7 +42,6 @@ def json_dict_to_instruction_list(json_dict):
             instructions.__dict__[key] = json_dict_to_instruction_list(val)
         else:
             instructions.__dict__[key] = val
-    print instruction_list_to_json(instructions)
     return instructions
 
 # TODO - Implement lookup for instruction numbers
@@ -63,16 +62,10 @@ class InstructionListEncoder(json.JSONEncoder):
             return o.__dict__
 
 
-"""class InstructionListDecoder(json.JSONDecoder):
-    def default(self, o):
-        if not isinstance(o, InstructionList.InstructionList):
-            return super(InstructionListDecoder, self).default(o)
-        else:
-            return o.__dict__"""
-
 # TODO - Read in state
 def read_gpio(gpio_id):
     return 1
+
 
 # TODO - Set state
 def set_gpio(gpio_id):
@@ -87,3 +80,8 @@ def set_led(led_id, color):
 # TODO - Asynchronously read a value from NFC
 def read_nfc():
     return None
+
+
+# TODO - Decode instruction to its rgb tuple
+def instruction_to_color(instruction_id):
+    return 1

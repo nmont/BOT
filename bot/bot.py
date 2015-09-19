@@ -1,33 +1,45 @@
 __author__ = 'ben'
 
-# TODO - Run these before this script compiles
 import sys
 sys.path.append('/home/ben/workspace/BOT/api')
 
 import api
 import InstructionList
 
-def Record():
+
+def record():
 
     api.set_led(api.PROGRAM_LED_ID, api.RED)
     instructions = InstructionList.InstructionList()
 
     # While we are set to record state and the user hasn't finalized the program
-    while api.read_gpio(api.PROGRAM_SWITCH_ID) and not api.read_gpio(api.GO_BUTTON_ID):
+    while api.read_gpio(api.PROGRAM_SWITCH_ID):
         nfc = api.read_nfc()
-        if nfc != None:
-            instructions.append_instruction(api.parse_instruction(nfc))
+        if nfc is not None:
+            instruction_id = api.parse_instruction(nfc)
+            instructions.append_instruction(instruction_id)
+
             # buzz the buzzer
             api.set_gpio(api.PROGRAM_BUZZER_ID)
+            color = api.instruction_to_color(instruction_id)
 
-    print "Record"
+            # Set the instruction led to our desired color
+            api.set_led(api.INSTRUCTION_LED_ID, color)
 
-def Play():
+        if api.read_gpio(api.GO_BUTTON_ID):
+            # Overwrite instruction file
+            f = open('instructions.json', 'w')
+            f.write(api.instruction_list_to_json(instructions))
+            f.close()
+            break
+
+
+def play():
     print "Play"
 
 while True:
     if api.read_gpio(api.PROGRAM_SWITCH_ID):
-        Record()
+        record()
     else:
-        Play()
+        play()
 
