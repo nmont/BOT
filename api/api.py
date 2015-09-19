@@ -2,6 +2,7 @@ __author__ = 'Ben Williams'
 
 import InstructionList
 import json
+import hardware_api
 
 # Dependencies on Raspberry pi
 import RPi.GPIO as GPIO
@@ -38,9 +39,9 @@ WHEEL_BB = 12
 WHEEL_AB = 6
 
 # COLORS
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
+RED = (4095, 0, 0)
+GREEN = (0, 4095, 0)
+BLUE = (0, 0, 4095)
 
 
 # Takes in string file name
@@ -87,6 +88,26 @@ def set_gpio(gpio_id):
 
 # TODO - Set LED based off of ID and RGB combination
 def set_led(led_id, color):
+    # Open up i2c com with pwm driver
+
+    # set R led_id low start address to 0
+    # set R led_id high start address to 0
+    # set G led_id low start address to 0
+    # set G led_id high start address to 0
+    # set B led_id low start address to 0
+    # set B led_id high start address to 0
+
+    # set R led_id low end address to color[0] & 0x0FF
+    # set R led_id high end address to (color[0] >> 8) & 0x0F
+
+    # set G led_id low end address to color[1] & 0x0FF
+    # set G led_id high end address to (color[1] >> 8) & 0x0F
+
+    # set B led_id low end address to color[2] & 0x0FF
+    # set B led_id high end address to (color[2] >> 8) & 0x0F
+
+    # close i2c com
+
     return 1
 
 
@@ -102,4 +123,21 @@ def instruction_to_color(instruction_id):
 
 # TODO - Determine what to do based off instruction id
 def do_instruction(instruction_id):
-    return 1
+    if instruction_id == MOVE_FORWARD:
+        return hardware_api.move('forward', 1000)
+    elif instruction_id == PIVOT_LEFT:
+        return hardware_api.move('left', 1000)
+    elif instruction_id == PIVOT_RIGHT:
+        return hardware_api.move('right', 1000)
+    elif instruction_id == MOVE_BACKWARDS:
+        return hardware_api.move('backward', 1000)
+    elif instruction_id == BEEP:
+        return
+    elif instruction_id == HALT_1S:
+        return
+    elif instruction_id == LED:
+        return
+    elif instruction_id == DANCE:
+        return
+    else:
+        return
