@@ -8,6 +8,7 @@ def init():
 
     # Set GPIO mode to BCM and and set each pin to input or output
     GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
 
     # Wheel A-B
     GPIO.setup(6, GPIO.OUT)
