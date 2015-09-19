@@ -44,7 +44,7 @@ def record():
     while GPIO.input(api.PROGRAM_SWITCH_ID) == 1:
         print "Recording"
         nfc = hardware_api.get_nfc()
-
+        print nfc
         if last_nfc is not None and last_nfc == nfc:
             continue
         elif nfc is not None:
