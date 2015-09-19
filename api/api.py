@@ -36,6 +36,7 @@ def json_to_instruction_list(json_string):
     instructions = InstructionList.InstructionList()
     json_list = json.loads(json_string)
     print json_list
+    return instructions
 
 
 # TODO - Implement lookup for instruction numbers
