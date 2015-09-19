@@ -75,6 +75,10 @@ def record():
 
 
 def play():
+    GPIO.output(api.PROGRAM_BUZZER_ID, True)
+    time.sleep(.3)
+    GPIO.output(api.PROGRAM_BUZZER_ID, False)
+
     api.set_led(api.PROGRAM_LED_ID, api.GREEN)
     f = open('instructions.json', 'r')
     json_dict = json.loads(f.read())
