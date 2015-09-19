@@ -2,9 +2,10 @@ __author__ = 'ben'
 
 import sys
 import json
-sys.path.append('/home/ben/workspace/BOT/api')
+sys.path.append('/home/pi/BOT/api')
 
 import api
+import hardware_api
 import InstructionList
 
 
@@ -37,11 +38,11 @@ def record():
 
     last_nfc = None
 
+    hardware_api.init()
     # While we are set to record state and the user hasn't finalized the program
     while api.read_gpio(api.PROGRAM_SWITCH_ID):
         print "Recording"
-        # nfc = api.read_nfc()
-        nfc = int(raw_input())
+        nfc = hardware_api.get_nfc()
 
         if last_nfc is not None and last_nfc == nfc:
             continue
