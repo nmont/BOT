@@ -35,15 +35,21 @@ WHEEL_AB = 6
 # COLORS
 RED = (255, 0, 0)
 
+
 # Takes in string file name
 # outputs fulled constructed instruction list
 # TODO - Get this to work
-def json_to_instruction_list(json_string):
+def json_dict_to_instruction_list(json_dict):
     instructions = InstructionList.InstructionList()
-    json_list = json.loads(json_string)
-    print json_list
+    for key, val in json_dict.iteritems():
+        if val is None:
+            instructions.__dict__[key] = val
+        elif isinstance(val, dict):
+            instructions.__dict__[key] = json_dict_to_instruction_list(val)
+        else:
+            instructions.__dict__[key] = val
+    print instruction_list_to_json(instructions)
     return instructions
-
 
 # TODO - Implement lookup for instruction numbers
 def parse_instruction(nfc):
@@ -51,7 +57,6 @@ def parse_instruction(nfc):
     return instruction
 
 
-# TODO - Put main_list elements in quotes
 def instruction_list_to_json(instructions):
     return json.dumps(instructions, cls=InstructionListEncoder)
 
