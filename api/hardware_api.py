@@ -37,45 +37,56 @@ def move(direction, move_time):
 
     time_counter = 0
 
+    if direction == 'forward':
+        # Left wheel forward
+        GPIO.output(6, False)
+        GPIO.output(13, True)
+
+        # Right wheel forward
+        GPIO.output(16, False)
+        GPIO.output(12, True)
+
+    if direction == 'backward':
+        # Left wheel backward
+        GPIO.output(6, True)
+        GPIO.output(13, False)
+
+        # Right wheel backward
+        GPIO.output(16, True)
+        GPIO.output(12, False)
+
+    if direction == 'Right':
+        # Left wheel backward
+        GPIO.output(6, True)
+        GPIO.output(13, False)
+
+        # Right wheel backward
+        GPIO.output(16, True)
+        GPIO.output(12, False)
+
+    if direction == 'backward':
+        # Left wheel backward
+        GPIO.output(6, True)
+        GPIO.output(13, False)
+
+        # Right wheel backward
+        GPIO.output(16, True)
+        GPIO.output(12, False)
+
+
     while time_counter < move_time:
-            if direction == 'forward':
-                    # Left wheel forward
-                    GPIO.output(6, False)
-                    GPIO.output(13, True)
+        if GPIO.input(4) == 1:
+            return api.GO_BUTTON_INTERRUPT
 
-                    # Right wheel forward
-                    GPIO.output(16, False)
-                    GPIO.output(12, True)
+        time_counter += 50
+        time.sleep(.05)
 
-            if direction == 'backward':
-                    # Left wheel backward
-                    GPIO.output(6, True)
-                    GPIO.output(13, False)
+def get_nfc():
+    try:
+        uid = mifare.select()
+        return uid
+    except nxppy.SelectError:
+        return none
 
-                    # Right wheel backward
-                    GPIO.output(16, True)
-                    GPIO.output(12, False)
 
-            if direction == 'Right':
-                    # Left wheel backward
-                    GPIO.output(6, True)
-                    GPIO.output(13, False)
-
-                    # Right wheel backward
-                    GPIO.output(16, True)
-                    GPIO.output(12, False)
-
-            if direction == 'backward':
-                    # Left wheel backward
-                    GPIO.output(6, True)
-                    GPIO.output(13, False)
-
-                    # Right wheel backward
-                    GPIO.output(16, True)
-                    GPIO.output(12, False)
-
-            if GPIO.input(4) == 1:
-                    return api.GO_BUTTON_INTERRUPT
-            time_counter += 50
-            time.sleep(.05)
 
