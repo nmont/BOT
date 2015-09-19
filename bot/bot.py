@@ -108,7 +108,7 @@ def play():
         continue
 
 while True:
-    if api.read_gpio(api.PROGRAM_SWITCH_ID):
+    if GPIO.input(api.PROGRAM_SWITCH_ID) == 1:
         record()
     else:
         play()
