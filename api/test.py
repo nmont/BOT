@@ -16,5 +16,11 @@ instructions.append_instruction(api.DONE)
 instructions.append_instruction(api.RIGHT_BUMPER_END)
 instructions.append_instruction(api.GOTO_START)
 
+f = open('test_json.json', 'w')
+
 json_string = api.instruction_list_to_json(instructions)
+
+f.write(json_string)
+f.close()
+
 api.json_dict_to_instruction_list(json.loads(json_string))
