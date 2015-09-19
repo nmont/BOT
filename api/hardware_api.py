@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 import nxppy
 import api
 
+
 def init():
 
     # Set GPIO mode to BCM and and set each pin to input or output
@@ -20,7 +21,6 @@ def init():
     # Buzzer
     GPIO.setup(21, GPIO.OUT)
 
-
     # Push Button left and right, respectively
     GPIO.setup(20, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -33,53 +33,49 @@ def init():
 
 
 # Move in a direction for a given time in MILLISECONS
-def move(direction, time):
+def move(direction, move_time):
 
     time_counter = 0
 
-        while(time_counter < time):
-                if direction == 'forward':
-                        # Left wheel forward
-                        GPIO.output(6, False)
-                        GPIO.output(13, True)
+    while time_counter < move_time:
+            if direction == 'forward':
+                    # Left wheel forward
+                    GPIO.output(6, False)
+                    GPIO.output(13, True)
 
-                        # Right wheel forward
-                        GPIO.output(16, False)
-                        GPIO.output(12, True)
+                    # Right wheel forward
+                    GPIO.output(16, False)
+                    GPIO.output(12, True)
 
-                if direction == 'backward':
-                        # Left wheel backward
-                        GPIO.output(6, True)
-                        GPIO.output(13, False)
+            if direction == 'backward':
+                    # Left wheel backward
+                    GPIO.output(6, True)
+                    GPIO.output(13, False)
 
-                        # Right wheel backward
-                        GPIO.output(16, True)
-                        GPIO.output(12, False)
+                    # Right wheel backward
+                    GPIO.output(16, True)
+                    GPIO.output(12, False)
 
-                if direction == 'Right':
-                        # Left wheel backward
-                        GPIO.output(6, True)
-                        GPIO.output(13, False)
+            if direction == 'Right':
+                    # Left wheel backward
+                    GPIO.output(6, True)
+                    GPIO.output(13, False)
 
-                        # Right wheel backward
-                        GPIO.output(16, True)
-                        GPIO.output(12, False)
+                    # Right wheel backward
+                    GPIO.output(16, True)
+                    GPIO.output(12, False)
 
-                if direction == 'backward':
-                        # Left wheel backward
-                        GPIO.output(6, True)
-                        GPIO.output(13, False)
+            if direction == 'backward':
+                    # Left wheel backward
+                    GPIO.output(6, True)
+                    GPIO.output(13, False)
 
-                        # Right wheel backward
-                        GPIO.output(16, True)
-                        GPIO.output(12, False)
+                    # Right wheel backward
+                    GPIO.output(16, True)
+                    GPIO.output(12, False)
 
+            if GPIO.input(4) == 1:
+                    return api.GO_BUTTON_INTERRUPT
+            time_counter += 50
+            time.sleep(.05)
 
-
-                if GPIO.input(4) == 1:
-                        return api.GO_BUTTON_INTERRUPT
-
-                time_counter = time_counter + 50
-
-                time.sleep(.05)
-    

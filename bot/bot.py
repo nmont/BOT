@@ -9,6 +9,7 @@ import InstructionList
 
 
 def bumper(instructions):
+    print "Bumper"
     instruction_counter = 0
     while instruction_counter < len(instructions.main_list):
         instruction_id = instructions.main_list[instruction_counter]
@@ -38,11 +39,14 @@ def record():
 
     # While we are set to record state and the user hasn't finalized the program
     while api.read_gpio(api.PROGRAM_SWITCH_ID):
-        nfc = api.read_nfc()
+        print "Recording"
+        # nfc = api.read_nfc()
+        nfc = int(raw_input())
 
         if last_nfc is not None and last_nfc == nfc:
             continue
         elif nfc is not None:
+            print "Appending Instruction"
             instruction_id = api.parse_instruction(nfc)
             instructions.append_instruction(instruction_id)
 
@@ -55,6 +59,7 @@ def record():
             last_nfc = nfc
 
         if api.read_gpio(api.GO_BUTTON_ID):
+            print "Programmed"
             # Overwrite instruction file
             f = open('instructions.json', 'w')
             f.write(api.instruction_list_to_json(instructions))
