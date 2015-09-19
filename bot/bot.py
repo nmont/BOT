@@ -58,7 +58,6 @@ def record():
 
             # Set the instruction led to our desired color
             api.set_led(api.INSTRUCTION_LED_ID, color)
-            last_nfc = nfc
 
         if GPIO.input(api.GO_BUTTON_ID) == 1:
             print "Programmed"
@@ -67,6 +66,8 @@ def record():
             f.write(api.instruction_list_to_json(instructions))
             f.close()
             break
+
+        last_nfc = nfc
 
 
 def play():
