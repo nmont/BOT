@@ -41,10 +41,9 @@ def record():
 
     hardware_api.init()
     # While we are set to record state and the user hasn't finalized the program
-    while GPIO.input(api.PROGRAM_SWITCH_ID) == 1:
+    while GPIO.input(api.PROGRAM_SWITCH_ID) == 1 and not GPIO.input(api.GO_BUTTON_ID):
         print "Recording"
         nfc = hardware_api.get_nfc()
-        print nfc
         if last_nfc is not None and last_nfc == nfc:
             continue
         elif nfc is not None:
@@ -55,7 +54,7 @@ def record():
             # buzz the buzzer
             #api.set_gpio(api.PROGRAM_BUZZER_ID)
             GPIO.output(api.PROGRAM_BUZZER_ID, True)
-            time.sleep(.1)
+            time.sleep(.2)
             GPIO.output(api.PROGRAM_BUZZER_ID, False)
 
             color = api.instruction_to_color(instruction_id)
