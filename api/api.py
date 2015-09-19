@@ -104,10 +104,13 @@ def instruction_to_color(instruction_id):
 # TODO - Determine what to do based off instruction id
 def do_instruction(instruction_id):
     if instruction_id == MOVE_FORWARD:
-        return
+        return hardware_api.move('forward', 1000)
     elif instruction_id == PIVOT_LEFT:
+        return hardware_api.move('left', 1000)
     elif instruction_id == PIVOT_RIGHT:
+        return hardware_api.move('right', 1000)
     elif instruction_id == MOVE_BACKWARDS:
+        return hardware_api.move('backward', 1000)
     elif instruction_id == BEEP:
     elif instruction_id == HALT_1S:
     elif instruction_id == LED:
