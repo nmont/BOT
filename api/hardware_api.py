@@ -11,26 +11,30 @@ def init():
     GPIO.setwarnings(False)
 
     # Wheel A-B
-    GPIO.setup(6, GPIO.OUT)
+    GPIO.setup(api.WHEEL_AB, GPIO.OUT)
+    GPIO.output(api.WHEEL_AB, False)
 
     # Wheel A-A
-    GPIO.setup(13, GPIO.OUT)
+    GPIO.setup(api.WHEEL_AB, GPIO.OUT)
+    GPIO.output(api.WHEEL_AA, False)
 
     # Wheel B-A
-    GPIO.setup(16, GPIO.OUT)
+    GPIO.setup(api.WHEEL_BA, GPIO.OUT)
+    GPIO.output(api.WHEEL_BA, False)
 
     # Buzzer
-    GPIO.setup(21, GPIO.OUT)
+    GPIO.setup(api.PROGRAM_BUZZER_ID, GPIO.OUT)
+    GPIO.output(api.PROGRAM_BUZZER_ID, False)
 
     # Push Button left and right, respectively
-    GPIO.setup(20, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.setup(26, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(api.LEFT_BUMPER_ID, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(api.RIGHT_BUMPER_ID, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     # Program switch
-    GPIO.setup(19, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(api.PROGRAM_SWITCH_ID, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     # Go button
-    GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(api.GO_BUTTON_ID, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 
 # Move in a direction for a given time in MILLISECONS
@@ -40,39 +44,39 @@ def move(direction, move_time):
 
     if direction == 'forward':
         # Left wheel forward
-        GPIO.output(6, False)
-        GPIO.output(13, True)
+        GPIO.output(api.BUTTON_AB, False)
+        GPIO.output(api.BUTTON_AA, True)
 
         # Right wheel forward
-        GPIO.output(16, False)
-        GPIO.output(12, True)
+        GPIO.output(api.BUTTON_BA, False)
+        GPIO.output(api.BUTTON_BB, True)
 
     if direction == 'backward':
         # Left wheel backward
-        GPIO.output(6, True)
-        GPIO.output(13, False)
+        GPIO.output(api.BUTTON_AB, True)
+        GPIO.output(api.BUTTON_AA, False)
 
         # Right wheel backward
-        GPIO.output(16, True)
-        GPIO.output(12, False)
+        GPIO.output(api.BUTTON_BA, True)
+        GPIO.output(api.BUTTON_BB, False)
 
     if direction == 'Right':
         # Left wheel backward
-        GPIO.output(6, True)
-        GPIO.output(13, False)
+        GPIO.output(api.BUTTON_AB, True)
+        GPIO.output(api.BUTTON_AA, False)
 
         # Right wheel backward
-        GPIO.output(16, True)
-        GPIO.output(12, False)
+        GPIO.output(api.BUTTON_BA, True)
+        GPIO.output(api.BUTTON_BB, False)
 
     if direction == 'backward':
         # Left wheel backward
-        GPIO.output(6, True)
-        GPIO.output(13, False)
+        GPIO.output(api.BUTTON_AB, True)
+        GPIO.output(api.BUTTON_AA, False)
 
         # Right wheel backward
-        GPIO.output(16, True)
-        GPIO.output(12, False)
+        GPIO.output(api.BUTTON_BA, True)
+        GPIO.output(api.BUTTON_BB, False)
 
     while time_counter < move_time:
         if GPIO.input(4) == 1:
@@ -82,10 +86,10 @@ def move(direction, move_time):
         time.sleep(.05)
 
     # stop all wheels
-    GPIO.output(6, False)
-    GPIO.output(12, False)
-    GPIO.output(13, False)
-    GPIO.output(16, False)
+    GPIO.output(api.BUTTON_AB, False)
+    GPIO.output(api.BUTTON_BB, False)
+    GPIO.output(api.BUTTON_AA, False)
+    GPIO.output(api.BUTTON_BA, False)
 
 
 def get_nfc():
