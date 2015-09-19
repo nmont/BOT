@@ -12,10 +12,15 @@ def record():
     api.set_led(api.PROGRAM_LED_ID, api.RED)
     instructions = InstructionList.InstructionList()
 
+    last_nfc = None
+
     # While we are set to record state and the user hasn't finalized the program
     while api.read_gpio(api.PROGRAM_SWITCH_ID):
         nfc = api.read_nfc()
-        if nfc is not None:
+
+        if last_nfc is not None and last_nfc == nfc:
+            continue
+        elif nfc is not None:
             instruction_id = api.parse_instruction(nfc)
             instructions.append_instruction(instruction_id)
 
@@ -25,6 +30,7 @@ def record():
 
             # Set the instruction led to our desired color
             api.set_led(api.INSTRUCTION_LED_ID, color)
+            last_nfc = nfc
 
         if api.read_gpio(api.GO_BUTTON_ID):
             # Overwrite instruction file
