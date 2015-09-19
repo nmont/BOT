@@ -27,12 +27,10 @@ def parse_instruction(string):
     instruction = Instruction(int(string))
     return instruction
 
+
 def instruction_list_to_json(instructions, file_name):
     if type(instructions) != InstructionList:
         return -1
     f = open(file_name, 'w')
     f.write(json.dump(instructions))
-    for item in json_list:
-        instruction = parse_instruction(item)
-        i.append_instruction(instruction)
-    return i
+    return 0
