@@ -93,7 +93,7 @@ def get_nfc():
         uid = mifare.select()
         return uid
     except nxppy.SelectError:
-        return none
+        return None
 
 
 
