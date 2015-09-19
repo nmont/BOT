@@ -3,6 +3,8 @@ __author__ = 'Ben Williams'
 import InstructionList
 import json
 
+# Dependencies on Raspberry pi
+import RPi.GPIO as GPIO
 
 # INSTRUCTION IDS
 MOVE_FORWARD = 1
@@ -22,9 +24,13 @@ DANCE = 14
 
 # GPIO_IDs
 PROGRAM_LED_ID = 10
-PROGRAM_SWITCH_ID = 4
-GO_BUTTON_ID = 8
-PROGRAM_BUZZER_ID = 7
+PROGRAM_SWITCH_ID = 19
+GO_BUTTON_ID = 5
+PROGRAM_BUZZER_ID = 21
+WHEEL_BA = 16
+WHEEL_AA = 13
+WHEEL_BB = 12
+WHEEL_AB = 6
 
 # COLORS
 RED = (255, 0, 0)
