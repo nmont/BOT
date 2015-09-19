@@ -54,7 +54,7 @@ def record():
             # buzz the buzzer
             #api.set_gpio(api.PROGRAM_BUZZER_ID)
             GPIO.output(api.PROGRAM_BUZZER_ID, True)
-            time.sleep(.2)
+            time.sleep(.1)
             GPIO.output(api.PROGRAM_BUZZER_ID, False)
 
             color = api.instruction_to_color(instruction_id)
@@ -64,6 +64,9 @@ def record():
 
         if GPIO.input(api.GO_BUTTON_ID) == 1:
             print "Programmed"
+            GPIO.output(api.PROGRAM_BUZZER_ID, True)
+            time.sleep(.3)
+            GPIO.output(api.PROGRAM_BUZZER_ID, False)
             # Overwrite instruction file
             f = open('instructions.json', 'w')
             f.write(api.instruction_list_to_json(instructions))
@@ -77,8 +80,10 @@ def play():
     api.set_led(api.PROGRAM_LED_ID, api.GREEN)
     f = open('instructions.json', 'r')
     json_dict = json.loads(f.read())
+    f.close()
     instructions = api.json_dict_to_instruction_list(json_dict)
     instruction_counter = 0
+    print instruction_counter
 
     while instruction_counter < len(instructions.main_list):
         instruction_id = instructions.main_list[instruction_counter]
