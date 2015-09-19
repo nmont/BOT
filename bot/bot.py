@@ -81,7 +81,6 @@ def play():
     f.close()
     instructions = api.json_dict_to_instruction_list(json_dict)
     instruction_counter = 0
-    print instruction_counter
 
     while instruction_counter < len(instructions.main_list):
         instruction_id = instructions.main_list[instruction_counter]
@@ -102,8 +101,9 @@ def play():
         else:
             instruction_counter += 1
 
-    while not GPIO.input(api.GO_BUTTON_ID) and not GPIO.input(api.PROGRAM_SWITCH_ID):
-        continue
+    while True:
+        if (GPIO.input(api.GO_BUTTON_ID)) or (GPIO.input(api.PROGRAM_SWITCH_ID)):
+            break
 
 hardware_api.init()
 while True:
