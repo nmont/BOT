@@ -73,13 +73,19 @@ def move(direction, move_time):
         GPIO.output(16, True)
         GPIO.output(12, False)
 
-
     while time_counter < move_time:
         if GPIO.input(4) == 1:
             return api.GO_BUTTON_INTERRUPT
 
         time_counter += 50
         time.sleep(.05)
+
+    # stop all wheels
+    GPIO.output(6, False)
+    GPIO.output(12, False)
+    GPIO.output(13, False)
+    GPIO.output(16, False)
+
 
 def get_nfc():
     try:
