@@ -3,6 +3,7 @@ __author__ = 'Ben Williams'
 import Instruction
 import api
 
+
 class InstructionList:
 
     def __init__(self):
@@ -25,7 +26,7 @@ class InstructionList:
                 self.right_bumper = InstructionList()
             self.right_bumper.append_instruction(instruction)
             return 2
-        # TODO - FIGURE OUT HOW TO TELL WHEN THE NEXT LEVEL DOWN IS FINISHED WITH IF BLOCK
+        # TODO - FIGURE OUT HOW TO TELL WHEN THE NEXT LEVEL DOWN IS FINISHED WITH BUMPER BLOCK
         elif instruction.INSTRUCTION_ID == api.LEFT_BUMPER_START:
             self.on_left = True
         elif instruction.INSTRUCTION_ID == api.LEFT_BUMPER_END:

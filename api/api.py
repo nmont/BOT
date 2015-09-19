@@ -8,13 +8,19 @@ LEFT_BUMPER_END = 11
 RIGHT_BUMPER_START = 12
 RIGHT_BUMPER_END = 13
 
-def txt_to_instruction_list(file):
-    f = open(file, 'r')
+
+# Takes in string file name
+# outputs fulled constructed instruction list
+def txt_to_instruction_list(file_name):
+    f = open(file_name, 'r')
     i = InstructionList()
     for line in f:
-        instruction = parseInstruction(line)
+        instruction = parse_instruction(line)
         i.append_instruction(instruction)
+    return i
 
-def parseInstruction(string):
+
+# TODO - Implement lookup for instruction numbers
+def parse_instruction(string):
     i = Instruction(int(string))
     return i
