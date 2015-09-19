@@ -44,39 +44,39 @@ def move(direction, move_time):
 
     if direction == 'forward':
         # Left wheel forward
-        GPIO.output(api.BUTTON_AB, False)
-        GPIO.output(api.BUTTON_AA, True)
+        GPIO.output(api.WHEEL_AB, False)
+        GPIO.output(api.WHEEL_AA, True)
 
         # Right wheel forward
-        GPIO.output(api.BUTTON_BA, False)
-        GPIO.output(api.BUTTON_BB, True)
+        GPIO.output(api.WHEEL_BA, False)
+        GPIO.output(api.WHEEL_BB, True)
 
     if direction == 'backward':
         # Left wheel backward
-        GPIO.output(api.BUTTON_AB, True)
-        GPIO.output(api.BUTTON_AA, False)
+        GPIO.output(api.WHEEL_AB, True)
+        GPIO.output(api.WHEEL_AA, False)
 
         # Right wheel backward
-        GPIO.output(api.BUTTON_BA, True)
-        GPIO.output(api.BUTTON_BB, False)
+        GPIO.output(api.WHEEL_BA, True)
+        GPIO.output(api.WHEEL_BB, False)
 
     if direction == 'Right':
         # Left wheel backward
-        GPIO.output(api.BUTTON_AB, True)
-        GPIO.output(api.BUTTON_AA, False)
+        GPIO.output(api.WHEEL_AB, True)
+        GPIO.output(api.WHEEL_AA, False)
 
         # Right wheel backward
-        GPIO.output(api.BUTTON_BA, True)
-        GPIO.output(api.BUTTON_BB, False)
+        GPIO.output(api.WHEEL_BA, True)
+        GPIO.output(api.WHEEL_BB, False)
 
     if direction == 'backward':
         # Left wheel backward
-        GPIO.output(api.BUTTON_AB, True)
-        GPIO.output(api.BUTTON_AA, False)
+        GPIO.output(api.WHEEL_AB, True)
+        GPIO.output(api.WHEEL_AA, False)
 
         # Right wheel backward
-        GPIO.output(api.BUTTON_BA, True)
-        GPIO.output(api.BUTTON_BB, False)
+        GPIO.output(api.WHEEL_BA, True)
+        GPIO.output(api.WHEEL_BB, False)
 
     while time_counter < move_time:
         if GPIO.input(4) == 1:
@@ -86,10 +86,10 @@ def move(direction, move_time):
         time.sleep(.05)
 
     # stop all wheels
-    GPIO.output(api.BUTTON_AB, False)
-    GPIO.output(api.BUTTON_BB, False)
-    GPIO.output(api.BUTTON_AA, False)
-    GPIO.output(api.BUTTON_BA, False)
+    GPIO.output(api.WHEEL_AB, False)
+    GPIO.output(api.WHEEL_BB, False)
+    GPIO.output(api.WHEEL_AA, False)
+    GPIO.output(api.WHEEL_BA, False)
 
 
 def get_nfc():
