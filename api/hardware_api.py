@@ -88,6 +88,7 @@ def move(direction, move_time):
 
 
 def get_nfc():
+    mifare = nxppy.Mifare()
     try:
         uid = mifare.select()
         return uid
