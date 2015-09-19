@@ -22,6 +22,11 @@ LED = 12
 DONE = 13
 DANCE = 14
 
+# INTERRUPT IDS
+GO_BUTTON_INTERRUPT = 20
+LEFT_BUMPER_INTERRUPT = 21
+RIGHT_BUMPER_INTERRUPT = 22
+
 # GPIO_IDs
 PROGRAM_LED_ID = 10
 PROGRAM_SWITCH_ID = 19
@@ -34,6 +39,8 @@ WHEEL_AB = 6
 
 # COLORS
 RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
 
 
 # Takes in string file name
@@ -90,4 +97,9 @@ def read_nfc():
 
 # TODO - Decode instruction to its rgb tuple
 def instruction_to_color(instruction_id):
+    return 1
+
+
+# TODO - Determine what to do based off instruction id
+def do_instruction(instruction_id):
     return 1
