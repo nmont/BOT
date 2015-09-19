@@ -29,7 +29,6 @@ LEFT_BUMPER_INTERRUPT = 21
 RIGHT_BUMPER_INTERRUPT = 22
 
 # GPIO_IDs
-PROGRAM_LED_ID = 10
 PROGRAM_SWITCH_ID = 19
 GO_BUTTON_ID = 5
 PROGRAM_BUZZER_ID = 21
@@ -43,6 +42,9 @@ RED = (4095, 0, 0)
 GREEN = (0, 4095, 0)
 BLUE = (0, 0, 4095)
 
+# LED IDS
+PROGRAM_LED_ID = 0
+INSTRUCTION_LED_ID = 1
 
 # Takes in string file name
 # outputs fulled constructed instruction list
@@ -89,6 +91,7 @@ def set_gpio(gpio_id):
 # TODO - Set LED based off of ID and RGB combination
 def set_led(led_id, color):
     # Open up i2c com with pwm driver
+
 
     # set R led_id low start address to 0
     # set R led_id high start address to 0
