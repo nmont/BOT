@@ -102,7 +102,7 @@ def play():
         else:
             instruction_counter += 1
 
-    while not api.read_gpio(api.GO_BUTTON_ID) and not api.read_gpio(api.PROGRAM_SWITCH_ID):
+    while not GPIO.input(api.GO_BUTTON_ID) and not GPIO.input(api.PROGRAM_SWITCH_ID):
         continue
 
 hardware_api.init()
