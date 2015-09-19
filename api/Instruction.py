@@ -1,5 +1,7 @@
 __author__ = 'Ben Williams'
 
+import api
+
 class Instruction:
     # The interface for defining all B.O.T. instructions
 
