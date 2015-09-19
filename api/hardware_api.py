@@ -22,6 +22,10 @@ def init():
     GPIO.setup(api.WHEEL_BA, GPIO.OUT)
     GPIO.output(api.WHEEL_BA, False)
 
+    # Wheel B-B
+    GPIO.setup(api.WHEEL_BB, GPIO.OUT)
+    GPIO.output(api.WHEEL_BB, False)
+
     # Buzzer
     GPIO.setup(api.PROGRAM_BUZZER_ID, GPIO.OUT)
     GPIO.output(api.PROGRAM_BUZZER_ID, False)
