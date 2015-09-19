@@ -53,7 +53,11 @@ def record():
             instructions.append_instruction(instruction_id)
 
             # buzz the buzzer
-            api.set_gpio(api.PROGRAM_BUZZER_ID)
+            #api.set_gpio(api.PROGRAM_BUZZER_ID)
+            GPIO.output(api.PROGRAM_BUZZER_ID, True)
+            time.sleep(.1)
+            GPIO.output(api.PROGRAM_BUZZER_ID, False)
+
             color = api.instruction_to_color(instruction_id)
 
             # Set the instruction led to our desired color
