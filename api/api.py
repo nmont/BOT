@@ -48,3 +48,8 @@ def instruction_list_to_json(instructions, output_string):
     output_string += ',\n'
     output_string += '}'
     return output_string
+
+
+# TODO - Read in state of toggle switch
+def get_prog_switch():
+    return 1
