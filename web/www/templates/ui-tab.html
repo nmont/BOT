@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta content="IE=edge" http-equiv="X-UA-Compatible">
 	<meta content="initial-scale=1.0, width=device-width" name="viewport">
-	<title>Material</title>
+	<title>Tabs - Material</title>
 
 	<!-- css -->
 	<link href="../css/base.min.css" rel="stylesheet">
@@ -46,14 +46,24 @@
 			</li>
 		</ul>
 		<a class="header-logo margin-left-no" href="index.html">Material</a>
-		<ul class="nav nav-list pull-right">
-			<li>
-				<a data-toggle="menu" href="#profile">
-					<span class="access-hide">John Smith</span>
-					<span class="avatar"><img alt="alt text for John Smith avatar" src="../images/users/avatar-001.jpg"></span>
-				</a>
-			</li>
-		</ul>
+		<div class="header-affix pull-left" data-offset-top="108" data-spy="affix">
+			<span class="header-text margin-left-no">
+				<i class="icon margin-right">chevron_right</i>Tabs
+			</span>
+		</div>
+		<nav class="tab-nav tab-nav-white pull-right">
+			<ul class="nav nav-list">
+				<li class="active">
+					<a class="waves-attach waves-light" data-toggle="tab" href="#first-tab-header">First Tab</a>
+				</li>
+				<li>
+					<a class="waves-attach waves-light" data-toggle="tab" href="#second-tab-header">Second Tab</a>
+				</li>
+				<li>
+					<a class="waves-attach waves-light" data-toggle="tab" href="#third-tab-header">Third Tab</a>
+				</li>
+			</ul>
+		</nav>
 	</header>
 	<nav aria-hidden="true" class="menu" id="menu" tabindex="-1">
 		<div class="menu-scroll">
@@ -78,7 +88,7 @@
 					<li>
 						<a class="waves-attach" href="ui-progress.html">Progress Bars</a>
 					</li>
-					<li>
+					<li class="active">
 						<a class="waves-attach" href="ui-tab.html">Tabs</a>
 					</li>
 					<li>
@@ -164,106 +174,133 @@
 	<div class="content">
 		<div class="content-heading">
 			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-lg-push-3 col-sm-10 col-sm-push-1">
-						<h1 class="heading">Material</h1>
-					</div>
-				</div>
+				<h1 class="heading">Tabs</h1>
 			</div>
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6 col-lg-push-3 col-sm-10 col-sm-push-1">
+				<div class="col-lg-6 col-md-8">
 					<section class="content-inner">
-						<p>Material is an HTML5 UI design based on Google Material.</p>
-						<blockquote>
-							<p>A visual language for our users that synthesizes the classic principles of good design with the innovation and possibility of technology and science. This is material design.</p>
-							<p><a class="text-break" href="http://www.google.com/design/spec/material-design/introduction.html">http://www.google.com/design/spec/material-design/introduction.html</a></p>
-						</blockquote>
-						<p>Have a play with a <a href="http://daemonite.github.io/material/">working prototype of Material</a>, let us know what you think at the <a href="http://labs.daemon.com.au">Daemon Labs</a> forum.</p>
-						<h2 class="content-sub-heading">Components</h2>
-						<div class="tile-wrap">
-							<a class="tile waves-attach" href="ui-card.html">
-								<div class="tile-inner">
-									<span>Cards</span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-collapse.html">
-								<div class="tile-inner">
-									<span>Collapsible Regions</span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-dropdown.html">
-								<div class="tile-inner">
-									<span>Dropdowns</span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-modal.html">
-								<div class="tile-inner">
-									<span>Modal &amp; Toasts</span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-nav.html">
-								<div class="tile-inner">
-									<span>Navs</span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-progress.html">
-								<div class="tile-inner">
-									<span>Progress Bars</span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-tab.html">
-								<div class="tile-inner">
-									<span>Tabs</span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-tile.html">
-								<div class="tile-inner">
-									<span>Tiles</span>
-								</div>
-							</a>
+						<p><span class="icon margin-right-sm">info</span>Default tab nav inherits accent colour (<code>$brand-color-accent</code>).</p>
+						<nav class="tab-nav">
+							<ul class="nav nav-justified">
+								<li class="active">
+									<a class="waves-attach" data-toggle="tab" href="#first-tab">First Tab</a>
+								</li>
+								<li>
+									<a class="waves-attach" data-toggle="tab" href="#second-tab">Second Tab</a>
+								</li>
+								<li>
+									<a class="waves-attach" data-toggle="tab" href="#third-tab">Third Tab</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="first-tab">
+								<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+							</div>
+							<div class="tab-pane fade" id="second-tab">
+								<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+							</div>
+							<div class="tab-pane fade" id="third-tab">
+								<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+							</div>
 						</div>
-						<h2 class="content-sub-heading">Elements</h2>
-						<div class="tile-wrap">
-							<a class="tile waves-attach" href="ui-button.html">
-								<div class="tile-inner">
-									<span>Button</span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-form.html">
-								<div class="tile-inner">
-									<span>Form Elements <small>(basic)</small></span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-form-adv.html">
-								<div class="tile-inner">
-									<span>Form Elements <small>(materialised)</small></span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-icon.html">
-								<div class="tile-inner">
-									<span>Icons</span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="ui-table.html">
-								<div class="tile-inner">
-									<span>Tables</span>
-								</div>
-							</a>
+						<nav class="tab-nav tab-nav-brand">
+							<ul class="nav nav-justified">
+								<li class="active">
+									<a class="waves-attach" data-toggle="tab" href="#first-tab-brand">Brand Colour</a>
+								</li>
+								<li>
+									<a class="waves-attach" data-toggle="tab" href="#second-tab-brand">Another Tab</a>
+								</li>
+								<li>
+									<a class="waves-attach" data-toggle="tab" href="#third-tab-brand">Third Tab</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="first-tab-brand">
+								<p>Brand Colour.</p>
+							</div>
+							<div class="tab-pane fade" id="second-tab-brand">
+								<p>Another Tab.</p>
+							</div>
+							<div class="tab-pane fade" id="third-tab-brand">
+								<p>Third Tab.</p>
+							</div>
 						</div>
-						<h2 class="content-sub-heading">Sample Pages</h2>
-						<div class="tile-wrap">
-							<a class="tile waves-attach" href="page-login.html">
-								<div class="tile-inner">
-									<span>Login Page</span>
-								</div>
-							</a>
-							<a class="tile waves-attach" href="page-palette.html">
-								<div class="tile-inner">
-									<span>Page Palettes</span>
-								</div>
-							</a>
+						<nav class="tab-nav tab-nav-amber">
+							<ul class="nav nav-justified">
+								<li class="active">
+									<a class="waves-attach" data-toggle="tab" href="#first-tab-amber">Amber Tab</a>
+								</li>
+								<li>
+									<a class="waves-attach" data-toggle="tab" href="#second-tab-amber">Another Tab</a>
+								</li>
+								<li>
+									<a class="waves-attach" data-toggle="tab" href="#third-tab-amber">Third Tab</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="first-tab-amber">
+								<p>Amber Tab.</p>
+							</div>
+							<div class="tab-pane fade" id="second-tab-amber">
+								<p>Another Tab.</p>
+							</div>
+							<div class="tab-pane fade" id="third-tab-amber">
+								<p>Third Tab.</p>
+							</div>
+						</div>
+						<nav class="tab-nav tab-nav-green">
+							<ul class="nav nav-justified">
+								<li class="active">
+									<a class="waves-attach" data-toggle="tab" href="#first-tab-green">Green Tab</a>
+								</li>
+								<li>
+									<a class="waves-attach" data-toggle="tab" href="#second-tab-green">Another Tab</a>
+								</li>
+								<li>
+									<a class="waves-attach" data-toggle="tab" href="#third-tab-green">Third Tab</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="first-tab-green">
+								<p>Green Tab.</p>
+							</div>
+							<div class="tab-pane fade" id="second-tab-green">
+								<p>Another Tab.</p>
+							</div>
+							<div class="tab-pane fade" id="third-tab-green">
+								<p>Third Tab.</p>
+							</div>
+						</div>
+						<nav class="tab-nav tab-nav-red">
+							<ul class="nav nav-justified">
+								<li class="active">
+									<a class="waves-attach" data-toggle="tab" href="#first-tab-red">Red Tab</a>
+								</li>
+								<li>
+									<a class="waves-attach" data-toggle="tab" href="#second-tab-red">Another Tab</a>
+								</li>
+								<li>
+									<a class="waves-attach" data-toggle="tab" href="#third-tab-red">Third Tab</a>
+								</li>
+							</ul>
+						</nav>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="first-tab-red">
+								<p>Red Tab.</p>
+							</div>
+							<div class="tab-pane fade" id="second-tab-red">
+								<p>Another Tab.</p>
+							</div>
+							<div class="tab-pane fade" id="third-tab-red">
+								<p>Third Tab.</p>
+							</div>
 						</div>
 					</section>
 				</div>

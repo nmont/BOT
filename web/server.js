@@ -1,16 +1,15 @@
+var fs = require("fs");
 var express = require('express');
 var app = express();
 
 app.use(express.static('www'));
 
 app.get('/data', function(req, res) {
-  res.json({
-    file: 'test.json',
-    list: [
-      'data',
-      'more_data'
-    ]
-  });
+  var content = fs.readFileSync("data.json");
+  console.log(content);
+  var jsoncontent = JSON.parse(content);
+  console.log(jsoncontent);
+  res.json(jsoncontent);
 });
 
 var server = app.listen(8000, function () {
