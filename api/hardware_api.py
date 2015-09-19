@@ -83,8 +83,12 @@ def move(direction, move_time):
         GPIO.output(api.WHEEL_BB, False)
 
     while time_counter < move_time:
-        if GPIO.input(4) == 1:
+        if GPIO.input(api.GO_BUTTON_ID) == 1:
             return api.GO_BUTTON_INTERRUPT
+        elif GPIO.input(api.LEFT_BUMPER_ID) == 1:
+            return api.LEFT_BUMPER_INTERRUPT
+        elif GPIO.input(api.RIGHT_BUMPER_ID) == 1:
+            return api.RIGHT_BUMPER_INTERRUPT
 
         time_counter += 50
         time.sleep(.05)
@@ -94,6 +98,8 @@ def move(direction, move_time):
     GPIO.output(api.WHEEL_BB, False)
     GPIO.output(api.WHEEL_AA, False)
     GPIO.output(api.WHEEL_BA, False)
+
+    return api.MOVE_SUCCESS
 
 
 def get_nfc():
