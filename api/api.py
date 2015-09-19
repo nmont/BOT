@@ -3,6 +3,8 @@ __author__ = 'Ben Williams'
 import InstructionList
 import json
 
+
+# INSTRUCTION IDS
 MOVE_FORWARD = 1
 PIVOT_LEFT = 2
 PIVOT_RIGHT = 3
@@ -16,10 +18,18 @@ RIGHT_BUMPER_END = 10
 HALT_1S = 11
 LED = 12
 DONE = 13
+DANCE = 14
 
+# GPIO_IDs
+PROGRAM_LED_ID = 10
+
+
+# COLORS
+RED = 1
 
 # Takes in string file name
 # outputs fulled constructed instruction list
+# TODO - Get this to work
 def json_to_instruction_list(json_string):
     instructions = InstructionList.InstructionList()
     json_list = json.loads(json_string)
@@ -32,6 +42,7 @@ def parse_instruction(string):
     return instruction
 
 
+# TODO - Put main_list elements in quotes
 def instruction_list_to_json(instructions, output_string):
     output_string += '{\n"main":' + str(instructions.main_list) + ',\n'
     output_string += '"left": '
@@ -52,4 +63,8 @@ def instruction_list_to_json(instructions, output_string):
 
 # TODO - Read in state of toggle switch
 def get_prog_switch():
+    return 1
+
+
+def set_led(led_id, color):
     return 1
