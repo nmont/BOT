@@ -1,7 +1,7 @@
 import time
 import RPi.GPIO as GPIO
+
 GPIO.setmode(GPIO.BCM)
-# GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # A-B
 GPIO.setup(6, GPIO.OUT)
@@ -9,13 +9,12 @@ GPIO.setup(6, GPIO.OUT)
 # A-A
 GPIO.setup(13, GPIO.OUT)
 
-
+# Set GPIO pin 13 (A-A) on and pin 6 (A-B) off
 GPIO.output(6, False)
 GPIO.output(13, True)
 
-#while(True):
-#	print GPIO.input(16)
-#	time.sleep(1)
+time.sleep(1)
 
-
+# Set GPIO Pin 13 (A-A) back off
+GPIO.output(6, False)
 
