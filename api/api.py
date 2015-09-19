@@ -22,10 +22,12 @@ DANCE = 14
 
 # GPIO_IDs
 PROGRAM_LED_ID = 10
-
+PROGRAM_SWITCH_ID = 4
+GO_BUTTON_ID = 8
+PROGRAM_BUZZER_ID = 7
 
 # COLORS
-RED = 1
+RED = (255, 0, 0)
 
 # Takes in string file name
 # outputs fulled constructed instruction list
@@ -37,8 +39,8 @@ def json_to_instruction_list(json_string):
 
 
 # TODO - Implement lookup for instruction numbers
-def parse_instruction(string):
-    instruction = int(string)
+def parse_instruction(nfc):
+    instruction = int(nfc)
     return instruction
 
 
@@ -61,10 +63,18 @@ def instruction_list_to_json(instructions, output_string):
     return output_string
 
 
-# TODO - Read in state of toggle switch
-def get_prog_switch():
+# TODO - Read in state
+def read_gpio(gpio_id):
+    return 1
+
+# TODO - Set state
+def set_gpio(gpio_id):
     return 1
 
 
 def set_led(led_id, color):
     return 1
+
+
+def read_nfc():
+    return None
