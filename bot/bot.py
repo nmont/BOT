@@ -7,8 +7,26 @@ sys.path.append('/home/ben/workspace/BOT/api')
 import api
 import InstructionList
 
+
 def bumper(instructions):
-    return None
+    instruction_counter = 0
+    while instruction_counter < len(instructions.main_list):
+        instruction_id = instructions.main_list[instruction_counter]
+        if instruction_id == api.GOTO_START:
+            instruction_counter = 0
+            continue
+        elif instruction_id == api.DONE:
+            break
+        interrupt = api.do_instruction(instruction_id)
+        if interrupt == api.GO_BUTTON_INTERRUPT:
+            instruction_counter = 0
+            continue
+        elif interrupt == api.LEFT_BUMPER_INTERRUPT and instructions.left_bumper is not None:
+            bumper(instructions.left_bumper)
+        elif interrupt == api.RIGHT_BUMPER_INTERRUPT and instructions.right_bumper is not None:
+            bumper(instructions.right_bumper)
+        else:
+            instruction_counter += 1
 
 
 def record():
@@ -69,8 +87,8 @@ def play():
         else:
             instruction_counter += 1
 
-
-    print "Play"
+    while not api.read_gpio(api.GO_BUTTON_ID) and not api.read_gpio(api.PROGRAM_SWITCH_ID):
+        continue
 
 while True:
     if api.read_gpio(api.PROGRAM_SWITCH_ID):
