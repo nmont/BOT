@@ -33,13 +33,11 @@ def bumper(instructions):
 
 
 def record():
-
     api.set_led(api.PROGRAM_LED_ID, api.RED)
     instructions = InstructionList.InstructionList()
 
     last_nfc = None
 
-    hardware_api.init()
     # While we are set to record state and the user hasn't finalized the program
     while GPIO.input(api.PROGRAM_SWITCH_ID) == 1 and not GPIO.input(api.GO_BUTTON_ID):
         print "Recording"
@@ -107,6 +105,7 @@ def play():
     while not api.read_gpio(api.GO_BUTTON_ID) and not api.read_gpio(api.PROGRAM_SWITCH_ID):
         continue
 
+hardware_api.init()
 while True:
     if GPIO.input(api.PROGRAM_SWITCH_ID) == 1:
         record()
