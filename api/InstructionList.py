@@ -1,6 +1,5 @@
 __author__ = 'Ben Williams'
 
-import Instruction
 import api
 
 
@@ -14,8 +13,6 @@ class InstructionList:
         self.on_left = False
 
     def append_instruction(self, instruction):
-        # if type(instruction) != Instruction.Instruction():
-        #     return -1
         if self.on_left:
             if self.left_bumper is None:
                 self.left_bumper = InstructionList()
@@ -27,13 +24,13 @@ class InstructionList:
             self.right_bumper.append_instruction(instruction)
             return 2
         # TODO - FIGURE OUT HOW TO TELL WHEN THE NEXT LEVEL DOWN IS FINISHED WITH BUMPER BLOCK
-        elif instruction.INSTRUCTION_ID == api.LEFT_BUMPER_START:
+        elif instruction == api.LEFT_BUMPER_START:
             self.on_left = True
-        elif instruction.INSTRUCTION_ID == api.LEFT_BUMPER_END:
+        elif instruction == api.LEFT_BUMPER_END:
             self.on_left = False
-        elif instruction.INSTRUCTION_ID == api.RIGHT_BUMPER_START:
+        elif instruction == api.RIGHT_BUMPER_START:
             self.on_right = True
-        elif instruction.INSTRUCTION_ID == api.RIGHT_BUMPER_END:
+        elif instruction == api.RIGHT_BUMPER_END:
             self.on_right = False
         else:
             self.main_list.append(instruction)

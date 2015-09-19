@@ -1,6 +1,5 @@
 __author__ = 'Ben Williams'
 
-import Instruction
 import InstructionList
 import json
 
@@ -21,15 +20,15 @@ def json_to_instruction_list(file_name):
 
 # TODO - Implement lookup for instruction numbers
 def parse_instruction(string):
-    instruction = Instruction.Instruction(int(string))
+    instruction = int(string)
     return instruction
 
 
 def instruction_list_to_json(instructions, file_name):
-    if type(instructions) != InstructionList:
-        return -1
     f = open(file_name, 'w')
-    f.write(json.dump(instructions))
-    print json.dump(instructions)
+    # f.write(json.dumps(instructions))
+    print json.dumps(instructions.__dict__)
+    # print json.dumps(instructions.left_bumper)
+    # print json.dumps(instructions.right_bumper)
     return 0
 
