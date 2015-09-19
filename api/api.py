@@ -72,9 +72,11 @@ def set_gpio(gpio_id):
     return 1
 
 
+# TODO - Set LED based off of ID and RGB combination
 def set_led(led_id, color):
     return 1
 
 
+# TODO - Asynchronously read a value from NFC
 def read_nfc():
     return None
