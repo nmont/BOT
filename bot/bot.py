@@ -7,6 +7,7 @@ sys.path.append('/home/pi/BOT/api')
 import api
 import hardware_api
 import InstructionList
+import RPi.GPIO as GPIO
 
 
 def bumper(instructions):
