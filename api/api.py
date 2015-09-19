@@ -20,10 +20,9 @@ DONE = 13
 
 # Takes in string file name
 # outputs fulled constructed instruction list
-def json_to_instruction_list(file_name):
-    f = open(file_name, 'r')
+def json_to_instruction_list(json_string):
     instructions = InstructionList.InstructionList()
-    json_list = json.load(f)
+    json_list = json.loads(json_string)
     print json_list
 
 
@@ -43,7 +42,7 @@ def instruction_list_to_json(instructions, output_string):
     output_string += ',\n'
     output_string += '"right": '
     if instructions.right_bumper is not None:
-        instruction_list_to_json(instructions.right_bumper, output_string)
+        output_string = instruction_list_to_json(instructions.right_bumper, output_string)
     else:
         output_string += '{}'
     output_string += ',\n'
