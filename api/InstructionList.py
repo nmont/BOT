@@ -25,6 +25,7 @@ class InstructionList:
                 self.right_bumper = InstructionList()
             self.right_bumper.append_instruction(instruction)
             return 2
+        # TODO - FIGURE OUT HOW TO TELL WHEN THE NEXT LEVEL DOWN IS FINISHED WITH IF BLOCK
         elif instruction.INSTRUCTION_ID == api.LEFT_BUMPER_START:
             self.on_left = True
         elif instruction.INSTRUCTION_ID == api.LEFT_BUMPER_END:
@@ -33,3 +34,6 @@ class InstructionList:
             self.on_right = True
         elif instruction.INSTRUCTION_ID == api.RIGHT_BUMPER_END:
             self.on_right = False
+        else:
+            self.main_list.append(instruction)
+            return 0
