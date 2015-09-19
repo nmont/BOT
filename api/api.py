@@ -45,23 +45,24 @@ def parse_instruction(nfc):
 
 
 # TODO - Put main_list elements in quotes
-def instruction_list_to_json(instructions, output_string):
-    output_string += '{\n"main":' + str(instructions.main_list) + ',\n'
-    output_string += '"left": '
-    if instructions.left_bumper is not None:
-        output_string = instruction_list_to_json(instructions.left_bumper, output_string)
-    else:
-        output_string += '{}'
-    output_string += ',\n'
-    output_string += '"right": '
-    if instructions.right_bumper is not None:
-        output_string = instruction_list_to_json(instructions.right_bumper, output_string)
-    else:
-        output_string += '{}'
-    output_string += ',\n'
-    output_string += '}'
-    return output_string
+def instruction_list_to_json(instructions):
+    return json.dumps(instructions, cls=InstructionListEncoder)
 
+
+class InstructionListEncoder(json.JSONEncoder):
+    def default(self, o):
+        if not isinstance(o, InstructionList.InstructionList):
+            return super(InstructionListEncoder, self).default(o)
+        else:
+            return o.__dict__
+
+
+"""class InstructionListDecoder(json.JSONDecoder):
+    def default(self, o):
+        if not isinstance(o, InstructionList.InstructionList):
+            return super(InstructionListDecoder, self).default(o)
+        else:
+            return o.__dict__"""
 
 # TODO - Read in state
 def read_gpio(gpio_id):
