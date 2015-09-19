@@ -15,7 +15,7 @@ def init():
     GPIO.output(api.WHEEL_AB, False)
 
     # Wheel A-A
-    GPIO.setup(api.WHEEL_AB, GPIO.OUT)
+    GPIO.setup(api.WHEEL_AA, GPIO.OUT)
     GPIO.output(api.WHEEL_AA, False)
 
     # Wheel B-A
