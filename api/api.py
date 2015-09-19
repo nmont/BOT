@@ -2,6 +2,7 @@ __author__ = 'Ben Williams'
 
 import InstructionList
 import json
+import hardware_api
 
 # Dependencies on Raspberry pi
 import RPi.GPIO as GPIO
@@ -102,4 +103,13 @@ def instruction_to_color(instruction_id):
 
 # TODO - Determine what to do based off instruction id
 def do_instruction(instruction_id):
-    return 1
+    if instruction_id == MOVE_FORWARD:
+        return
+    elif instruction_id == PIVOT_LEFT:
+    elif instruction_id == PIVOT_RIGHT:
+    elif instruction_id == MOVE_BACKWARDS:
+    elif instruction_id == BEEP:
+    elif instruction_id == HALT_1S:
+    elif instruction_id == LED:
+    elif instruction_id == DANCE:
+    else:
