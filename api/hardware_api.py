@@ -34,11 +34,31 @@ def init():
 # Move in a direction for a given time in MILLISECONS
 def move(direction, time):
 
-        if direction == 'right':
-            GPIO.output(6, False)
-            GPIO.output(13, True)
-            if GPIO.input(4) == 1:
-                // TODO Return Value
-            time.sleep(time / 1000)
+        time_counter = 0
+
+        if direction == 'forward':
+                # Left wheel forward
+                GPIO.output(6, False)
+                GPIO.output(13, True)
+
+                # Right wheel forward
+                GPIO.output(16, False)
+                GPIO.output(12, True)
+
+        if direction == 'backward':
+                # Left wheel backward
+                GPIO.output(6, True)
+                GPIO.output(13, False)
+
+                # Right wheel forward
+                GPIO.output(16, True)
+                GPIO.output(12, False)
+
+        if GPIO.input(4) == 1:
+                return GO_BUTTON_INTERRUPT
+        time_counter = time_counter + 50
+
+        time.sleep(time / 1000)
+
 
 
