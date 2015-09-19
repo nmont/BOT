@@ -3,6 +3,8 @@ __author__ = 'Ben Williams'
 import InstructionList
 import json
 
+# Dependencies on Raspberry pi
+import RPi.GPIO as GPIO
 
 # INSTRUCTION IDS
 MOVE_FORWARD = 1
@@ -22,10 +24,13 @@ DANCE = 14
 
 # GPIO_IDs
 PROGRAM_LED_ID = 10
-PROGRAM_SWITCH_ID = 4
-GO_BUTTON_ID = 8
-PROGRAM_BUZZER_ID = 7
-INSTRUCTION_LED_ID = 0
+PROGRAM_SWITCH_ID = 19
+GO_BUTTON_ID = 5
+PROGRAM_BUZZER_ID = 21
+WHEEL_BA = 16
+WHEEL_AA = 13
+WHEEL_BB = 12
+WHEEL_AB = 6
 
 # COLORS
 RED = (255, 0, 0)
@@ -43,6 +48,7 @@ def json_dict_to_instruction_list(json_dict):
         else:
             instructions.__dict__[key] = val
     return instructions
+
 
 # TODO - Implement lookup for instruction numbers
 def parse_instruction(nfc):
