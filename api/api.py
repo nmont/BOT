@@ -62,7 +62,7 @@ def json_dict_to_instruction_list(json_dict):
 
 # TODO - Implement lookup for instruction numbers
 def parse_instruction(nfc):
-    instruction = int(nfc)
+    instruction = int(nfc,16)
     return instruction
 
 

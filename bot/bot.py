@@ -40,7 +40,7 @@ def record():
 
     hardware_api.init()
     # While we are set to record state and the user hasn't finalized the program
-    while api.read_gpio(api.PROGRAM_SWITCH_ID):
+    while GPIO.input(api.PROGRAM_SWITCH_ID) == 1:
         print "Recording"
         nfc = hardware_api.get_nfc()
 
@@ -59,7 +59,7 @@ def record():
             api.set_led(api.INSTRUCTION_LED_ID, color)
             last_nfc = nfc
 
-        if api.read_gpio(api.GO_BUTTON_ID):
+        if GPIO.input(api.GO_BUTTON_ID) == 1:
             print "Programmed"
             # Overwrite instruction file
             f = open('instructions.json', 'w')
