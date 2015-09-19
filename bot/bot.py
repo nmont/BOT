@@ -8,7 +8,7 @@ import api
 import hardware_api
 import InstructionList
 import RPi.GPIO as GPIO
-
+import time
 
 def bumper(instructions):
     print "Bumper"
@@ -83,6 +83,7 @@ def play():
 
     while instruction_counter < len(instructions.main_list):
         instruction_id = instructions.main_list[instruction_counter]
+        print instruction_id
         if instruction_id == api.GOTO_START:
             instruction_counter = 0
             continue
