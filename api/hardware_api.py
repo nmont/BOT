@@ -117,14 +117,9 @@ def beep():
     return api.SUCCESS
 
 
-def blink():
-    GPIO.output(api.RED_LED_ID, True)
-    time.sleep(.5)
-    GPIO.output(api.RED_LED_ID, False)
-    return api.SUCCESS
-
 def dance():
     seed = random.uniform(-1, 1)
+    GPIO.output(api.RAINBOW_LED_ID, True)
     if seed < 0:
         turn_left()
         time.sleep(.7)
@@ -133,18 +128,19 @@ def dance():
         beep()
         turn_left()
         time.sleep(.7)
-        blink()
+        blink_green()
     else:
         turn_right()
         time.sleep(.7)
         turn_left()
         beep()
         time.sleep(1.4)
-        beep()
+        blink_red()
         turn_right()
         time.sleep(.7)
 
     stop_wheels()
+    GPIO.output(api.RAINBOW_LED_ID, False)
     return api.SUCCESS
 
 def turn_left():
@@ -171,3 +167,33 @@ def stop_wheels():
     GPIO.output(api.WHEEL_BB, False)
     GPIO.output(api.WHEEL_AA, False)
     GPIO.output(api.WHEEL_BA, False)
+
+def blink_red():
+    GPIO.output(api.RED_LED_ID, True)
+    time.sleep(.5)
+    GPIO.output(api.RED_LED_ID, False)
+    time.sleep(.5)
+    GPIO.output(api.RED_LED_ID, True)
+    time.sleep(.5)
+    GPIO.output(api.RED_LED_ID, False)
+    return api.SUCCESS
+
+def blink_green():
+    GPIO.output(api.GREEN_LED_ID, True)
+    time.sleep(.5)
+    GPIO.output(api.GREEN_LED_ID, False)
+    time.sleep(.5)
+    GPIO.output(api.GREEN_LED_ID, True)
+    time.sleep(.5)
+    GPIO.output(api.GREEN_LED_ID, False)
+    return api.SUCCESS
+
+def blink_rainbow():
+    GPIO.output(api.RAINBOW_LED_ID, True)
+    time.sleep(.5)
+    GPIO.output(api.RAINBOW_LED_ID, False)
+    time.sleep(.5)
+    GPIO.output(api.RAINBOW_LED_ID, True)
+    time.sleep(.5)
+    GPIO.output(api.RAINBOW_LED_ID, False)
+    return api.SUCCESS
