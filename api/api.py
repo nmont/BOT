@@ -105,6 +105,7 @@ def encode_instruction(nfc):
 
 
 def decode_instruction(instruction_id):
+    print 'decode instruciont id ', instruction_id
     if instruction_id == 1:
         return MOVE_FORWARD1
     elif instruction_id == 2:
