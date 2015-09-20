@@ -72,6 +72,7 @@ def json_dict_to_instruction_list(json_dict):
 
 
 def encode_instruction(nfc):
+    print 'encode instruciont id ', nfc
     if nfc == MOVE_FORWARD1 or nfc == MOVE_FORWARD2:
         return 1
     elif nfc == PIVOT_LEFT:
