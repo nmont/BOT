@@ -161,10 +161,10 @@ def decode_instruction_list(instructions):
         instructions.main_list[i] = decode_instruction(instructions.main_list[i])
     if instructions.left_bumper is not None:
         instructions.left_bumper = decode_instruction_list(instructions.left_bumper)
-        print instructions.left_bumper
+        print 'decoding left bumper'
     if instructions.right_bumper is not None:
         instructions.right_bumper = decode_instruction_list(instructions.right_bumper)
-        print instructions.right_bumper
+        print 'decoding right bumper'
     return instructions
 
 class InstructionListEncoder(json.JSONEncoder):
