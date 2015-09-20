@@ -4,104 +4,103 @@ var cardAPI = (function () {
 
 	function getCardInfo(code) {
 		var card = {};
-		var sampleImage = "../images/samples/portrait.jpg";
 		switch(code) {
 			case 1:
 				card = {
 					name: "Move Forward",
 					desc: "Move the robot forward for 1 second.",
-					image: sampleImage
+					image: "../images/gifs/forward.gif"
 				};
 				break;
 			case 2:
 				card = {
 					name: "Turn Left",
 					desc: "Turn the robot 90 degrees to its left.",
-					image: sampleImage
+					image: "../images/gifs/rotate-left.gif"
 				};
 				break;
 			case 3:
 				card = {
 					name: "Turn Right",
 					desc: "Turn the robot 90 degrees to its right.",
-					image: sampleImage
+					image: "../images/gifs/rotate-right.gif"
 				};
 				break;
 			case 4:
 				card = {
 					name: "Move Backwards",
 					desc: "Move the robot backwards for one second.",
-					image: sampleImage
+					image: "../images/gifs/backward.gif"
 				};
 				break;
 			case 5:
 				card = {
 					name: "Restart",
 					desc: "Go back to the beginning of the program and start running it again.",
-					image: sampleImage
+					image: "../images/gifs/restart.gif"
 				};
 				break;
 			case 6:
 				card = {
 					name: "Beep",
 					desc: "Make the robot beep.",
-					image: sampleImage
+					image: "../images/gifs/beep.gif"
 				};
 				break;
 			case 7:
 				card = {
 					name: "Left Bumper Start",
 					desc: "This is paired with a 'Left Bumper End' card. Everything in between them will run whenever the left bumper is triggered.",
-					image: sampleImage
+					image: "../images/gifs/left-bumper-start.gif"
 				};
 				break;
 			case 8:
 				card = {
 					name: "Left Bumper End",
 					desc: "This is paired with a 'Left Bumper Start' card. Everything in between them will run whenever the left bumper is triggered.",
-					image: sampleImage
+					image: "../images/gifs/left-bumper-end.gif"
 				};
 				break;
 			case 9:
 				card = {
 					name: "Right Bumper Start",
 					desc: "This is paired with a 'Right Bumper End' card. Everything in between them will run whenever the right bumper is triggered.",
-					image: sampleImage
+					image: "../images/gifs/right-bumper-start.gif"
 				};
 				break;
 			case 10:
 				card = {
 					name: "Right Bumper End",
 					desc: "This is paired with a 'Right Bumper Start' card. Everything in between them will run whenever the right bumper is triggered.",
-					image: sampleImage
+					image: "../images/gifs/right-bumper-end.gif"
 				};
 				break;
 			case 11:
 				card = {
 					name: "Wait",
 					desc: "Let the robot take a break from all this exhausting moving, and let it sit for a second.",
-					image: sampleImage
+					image: "../images/gifs/wait.gif"
 				};
 				break;
 			case 12:
 				card = {
 					name: "Blink Light",
 					desc: "Blink. Blink.",
-					image: sampleImage
+					image: "../images/gifs/blink.gif"
 				};
 				break;
 			case 13:
 				card = {
 					name: "Done",
 					desc: "Why would you stop?",
-					image: sampleImage
+					image: "../images/gifs/done.gif"
 				};
 				break;
 			case 14:
 				card = {
 					name: "Dance",
 					desc: "Robot breaks down into a mad dance sequence.",
-					image: sampleImage
+					image: "../images/gifs/dance.gif"
 				};
 				break;
 			default:
