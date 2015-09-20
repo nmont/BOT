@@ -2,7 +2,7 @@ import time
 import RPi.GPIO as GPIO
 import nxppy
 import api
-
+import random
 
 def init():
 

@@ -33,7 +33,8 @@ def bumper(instructions):
 
 
 def record():
-    api.set_led(api.PROGRAM_LED_ID, api.RED)
+    GPIO.output(api.RED_LED_ID, True)
+    GPIO.output(api.GREEN_LED_ID, False)
     instructions = InstructionList.InstructionList()
 
     last_nfc = None
@@ -80,7 +81,9 @@ def play():
     time.sleep(.3)
     GPIO.output(api.PROGRAM_BUZZER_ID, False)
 
-    api.set_led(api.PROGRAM_LED_ID, api.GREEN)
+    GPIO.output(api.RED_LED_ID, False)
+    GPIO.output(api.GREEN_LED_ID, True)
+
     f = open('instructions.json', 'r')
     json_dict = json.loads(f.read())
     f.close()
