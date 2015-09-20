@@ -99,8 +99,7 @@ def move(direction, move_time):
         time_counter += 50
         time.sleep(.05)
 
-
-
+    stop_wheels()
     return api.SUCCESS
 
 
