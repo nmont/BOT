@@ -162,7 +162,8 @@ def encode_instruction_list(instructions):
 
 def decode_instruction_list(instructions):
     for i in xrange(len(instructions.main_list)):
-        instructions.main_list[i] = decode_instruction(instructions.main_list[i])
+        if instructions.main_list[i] <= 14:
+            instructions.main_list[i] = decode_instruction(instructions.main_list[i])
     if instructions.left_bumper is not None:
         instructions.left_bumper = decode_instruction_list(instructions.left_bumper)
         print 'decoding left bumper'
