@@ -37,9 +37,6 @@ def init():
     GPIO.setup(api.RED_LED_ID, GPIO.OUT)
     GPIO.output(api.RED_LED_ID, False)
 
-    GPIO.setup(api.YELLOW_LED_ID, GPIO.OUT)
-    GPIO.output(api.YELLOW_LED_ID, False)
-
     GPIO.setup(api.GREEN_LED_ID, GPIO.OUT)
     GPIO.output(api.GREEN_LED_ID, False)
 
