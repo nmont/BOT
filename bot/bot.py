@@ -39,6 +39,7 @@ def bumper(instructions):
         else:
             instruction_counter += 1
 
+
 def record():
     GPIO.output(api.RED_LED_ID, True)
     GPIO.output(api.GREEN_LED_ID, False)
