@@ -16,12 +16,15 @@ def bumper(instructions):
     instruction_counter = 0
     while instruction_counter < len(instructions.main_list):
         instruction_id = instructions.main_list[instruction_counter]
+        print instruction_id
         if instruction_id == api.GOTO_START:
             instruction_counter = 0
             continue
         elif instruction_id == api.DONE:
             break
+        print 'about to do instructions'
         interrupt = api.do_instruction(instruction_id)
+        print 'interrupt'
         if interrupt == api.GO_BUTTON_INTERRUPT:
             # Restart Program
             instruction_counter = 0
