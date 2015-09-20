@@ -202,6 +202,10 @@ def blink_green():
     GPIO.output(api.GREEN_LED_ID, True)
     time.sleep(.5)
     GPIO.output(api.GREEN_LED_ID, False)
+    time.sleep(.5)
+    GPIO.output(api.GREEN_LED_ID, True)
+    time.sleep(.5)
+    GPIO.output(api.GREEN_LED_ID, False)
     return api.SUCCESS
 
 def blink_rainbow():
@@ -212,4 +216,25 @@ def blink_rainbow():
     GPIO.output(api.RAINBOW_LED_ID, True)
     time.sleep(.5)
     GPIO.output(api.RAINBOW_LED_ID, False)
+    time.sleep(.5)
+    GPIO.output(api.RAINBOW_LED_ID, True)
+    time.sleep(.5)
+    GPIO.output(api.RAINBOW_LED_ID, False)
+    return api.SUCCESS
+
+def halt(time):
+    counter_time = 0
+    while(counter_time < time):
+        if GPIO.input(api.GO_BUTTON_ID) == 1:
+            return api.GO_BUTTON_INTERRUPT
+        elif GPIO.input(api.LEFT_BUMPER_ID) == 1:
+            return api.LEFT_BUMPER_INTERRUPT
+        elif GPIO.input(api.RIGHT_BUMPER_ID) == 1:
+            return api.RIGHT_BUMPER_INTERRUPT
+        elif GPIO.input(api.PROGRAM_SWITCH_ID) == 1:
+            return  api.SWITCH_STATE_INTERRUPT
+
+        counter_time += 50
+        time.sleep(.05)
+
     return api.SUCCESS

@@ -193,8 +193,7 @@ def do_instruction(instruction_id):
     elif instruction_id == BEEP:
         return hardware_api.beep()
     elif instruction_id == HALT_1S:
-        time.sleep(1)
-        return SUCCESS
+        return hardware_api.halt(1000)
     elif instruction_id == LED:
         hardware_api.blink_rainbow()
         return SUCCESS
