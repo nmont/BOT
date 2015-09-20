@@ -222,9 +222,9 @@ def blink_rainbow():
     GPIO.output(api.RAINBOW_LED_ID, False)
     return api.SUCCESS
 
-def halt(time):
+def halt(halt_time):
     counter_time = 0
-    while(counter_time < time):
+    while(counter_time < halt_time):
         if GPIO.input(api.GO_BUTTON_ID) == 1:
             return api.GO_BUTTON_INTERRUPT
         elif GPIO.input(api.LEFT_BUMPER_ID) == 1:
