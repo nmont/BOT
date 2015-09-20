@@ -158,10 +158,10 @@ def decode_instruction_list(instructions):
     for i in xrange(len(instructions.main_list)):
         instructions.main_list[i] = decode_instruction(instructions.main_list[i])
     if instructions.left_bumper is not None:
-        instructions.left_bumper = decode_instruction(instructions.left_bumper)
+        instructions.left_bumper = decode_instruction_list(instructions.left_bumper)
         print instructions.left_bumper
     if instructions.right_bumper is not None:
-        instructions.right_bumper = decode_instruction(instructions.right_bumper)
+        instructions.right_bumper = decode_instruction_list(instructions.right_bumper)
         print instructions.right_bumper
     return instructions
 
