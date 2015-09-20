@@ -1,3 +1,6 @@
+import traceback
+import sys
+
 __author__ = 'Ben Williams'
 
 import InstructionList
@@ -136,6 +139,7 @@ def decode_instruction(instruction_id):
     elif instruction_id == 14:
         return DONE
     else:
+        traceback.print_exc(file=sys.stdout)
         return -1
 
 
