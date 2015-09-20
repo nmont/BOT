@@ -57,24 +57,26 @@ def move(direction, move_time):
     time_counter = 0
 
     if direction == 'forward':
-        # Left wheel forward
-        GPIO.output(api.WHEEL_AB, False)
-        GPIO.output(api.WHEEL_AA, True)
 
         # Right wheel forward
-        GPIO.output(api.WHEEL_BA, False)
-        GPIO.output(api.WHEEL_BB, True)
-
-    if direction == 'backward':
-        # Left wheel backward
         GPIO.output(api.WHEEL_AB, True)
         GPIO.output(api.WHEEL_AA, False)
 
-        # Right wheel backward
+        # Left wheel forward
         GPIO.output(api.WHEEL_BA, True)
         GPIO.output(api.WHEEL_BB, False)
 
-    if direction == 'Right':
+    if direction == 'backward':
+
+        # Right wheel backward
+        GPIO.output(api.WHEEL_AB, False)
+        GPIO.output(api.WHEEL_AA, True)
+
+        # Left wheel backward
+        GPIO.output(api.WHEEL_BA, False)
+        GPIO.output(api.WHEEL_BB, True)
+
+    if direction == 'right':
         turn_right()
 
     if direction == 'left':
@@ -97,8 +99,7 @@ def move(direction, move_time):
         time_counter += 50
         time.sleep(.05)
 
-
-
+    stop_wheels()
     return api.SUCCESS
 
 
@@ -122,44 +123,47 @@ def dance():
     GPIO.output(api.RAINBOW_LED_ID, True)
     if seed < 0:
         turn_left()
-        time.sleep(.7)
+        time.sleep(.3)
         turn_right()
-        time.sleep(1.4)
+        time.sleep(.6)
         beep()
         turn_left()
-        time.sleep(.7)
+        time.sleep(.3)
         blink_green()
     else:
         turn_right()
-        time.sleep(.7)
+        time.sleep(.3)
         turn_left()
         beep()
-        time.sleep(1.4)
+        time.sleep(.6)
         blink_red()
         turn_right()
-        time.sleep(.7)
+        time.sleep(.3)
 
     stop_wheels()
     GPIO.output(api.RAINBOW_LED_ID, False)
     return api.SUCCESS
 
 def turn_left():
-    # Left wheel forward
-    GPIO.output(api.WHEEL_AB, True)
-    GPIO.output(api.WHEEL_AA, False)
-
-    # Right wheel backward
-    GPIO.output(api.WHEEL_BA, True)
-    GPIO.output(api.WHEEL_BB, False)
-
-def turn_right():
+    print 'turning left'
     # Left wheel backward
-    GPIO.output(api.WHEEL_AB, True)
-    GPIO.output(api.WHEEL_AA, False)
+    GPIO.output(api.WHEEL_BA, False)
+    GPIO.output(api.WHEEL_BB, True)
 
     # Right wheel forward
+    GPIO.output(api.WHEEL_AB, True)
+    GPIO.output(api.WHEEL_AA, False)
+
+def turn_right():
+
+    print 'turning right'
+    # Left wheel forward
     GPIO.output(api.WHEEL_BA, True)
     GPIO.output(api.WHEEL_BB, False)
+
+    # Right wheel backward
+    GPIO.output(api.WHEEL_AB, False)
+    GPIO.output(api.WHEEL_AA, True)
 
 def stop_wheels():
     # stop all wheels

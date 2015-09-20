@@ -13,6 +13,7 @@ class InstructionList:
         self.on_left = False
 
     def append_instruction(self, instruction):
+        # instruction = api.decode_instructions(instruction)
         if self.on_left:
             if self.left_bumper is None:
                 self.left_bumper = InstructionList()
