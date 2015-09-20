@@ -1,0 +1,7 @@
+# Exclude node modules
+node_modules/
+
+# Exclude sass cache files
+.sass-cache/
+*.sassc
+*.scssc
