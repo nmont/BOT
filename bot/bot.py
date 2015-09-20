@@ -46,6 +46,7 @@ def record():
             continue
         elif nfc is not None:
             print "Appending Instruction"
+            print nfc
             instruction_id = api.parse_instruction(nfc)
             instructions.append_instruction(instruction_id)
 
@@ -75,7 +76,7 @@ def record():
 
 
 def play():
-    GPIO.output(api.PROGRAM_BUZZER_ID, True)
+    GPIO.output(api.PROGRAMV_BUZZER_ID, True)
     time.sleep(.3)
     GPIO.output(api.PROGRAM_BUZZER_ID, False)
 

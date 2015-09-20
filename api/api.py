@@ -8,10 +8,12 @@ import hardware_api
 import RPi.GPIO as GPIO
 
 # INSTRUCTION IDS
-MOVE_FORWARD = 0x042CA35AA34080
+MOVE_FORWARD1 = 0x042CA35AA34080
+MOVE_FORWARD2 = 0x042CA35AA34080
 PIVOT_LEFT = 2
 PIVOT_RIGHT = 3
-MOVE_BACKWARDS = 4
+MOVE_BACKWARDS1 = 4
+MOVE_BACKWARDS2 = 4
 GOTO_START = 5
 BEEP = 6
 LEFT_BUMPER_START = 7
@@ -27,7 +29,7 @@ DANCE = 14
 GO_BUTTON_INTERRUPT = 20
 LEFT_BUMPER_INTERRUPT = 21
 RIGHT_BUMPER_INTERRUPT = 22
-MOVE_SUCCESS = 1
+SUCCESS = 1
 
 # GPIO_IDs
 PROGRAM_SWITCH_ID = 19
@@ -39,6 +41,10 @@ WHEEL_BB = 12
 WHEEL_AB = 6
 LEFT_BUMPER_ID = 20
 RIGHT_BUMPER_ID = 26
+# TODO RED_LED_ID = ??
+# TODO YELLOW_LED_ID = ??
+# TODO GREEN_LED_ID = ??
+# TODO RAINBOW_LED_ID = ??
 
 # COLORS
 RED = (4095, 0, 0)
@@ -129,21 +135,24 @@ def instruction_to_color(instruction_id):
 
 # TODO - Determine what to do based off instruction id
 def do_instruction(instruction_id):
-    if instruction_id == MOVE_FORWARD:
+    if instruction_id == MOVE_FORWARD1 or instruction_id == MOVE_FORWARD2:
         return hardware_api.move('forward', 1000)
     elif instruction_id == PIVOT_LEFT:
         return hardware_api.move('left', 1000)
     elif instruction_id == PIVOT_RIGHT:
         return hardware_api.move('right', 1000)
-    elif instruction_id == MOVE_BACKWARDS:
+    elif instruction_id == MOVE_BACKWARDS1 or instruction_id == MOVE_BACKWARDS2:
         return hardware_api.move('backward', 1000)
     elif instruction_id == BEEP:
-        return
+        return hardware_api.beep()
     elif instruction_id == HALT_1S:
-        return
+        time.sleep(1)
+        return SUCCESS
     elif instruction_id == LED:
-        return
+        hardware_api.blink()
+        return SUCCESS
     elif instruction_id == DANCE:
+        hardware_api.dance()
         return
     else:
         return
