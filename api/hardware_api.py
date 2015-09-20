@@ -90,6 +90,9 @@ def move(direction, move_time):
         elif GPIO.input(api.RIGHT_BUMPER_ID) == 1:
             stop_wheels()
             return api.RIGHT_BUMPER_INTERRUPT
+        elif GPIO.input(api.PROGRAM_SWITCH_ID) == 1:
+            stop_wheels()
+            return  api.SWITCH_STATE_INTERRUPT
 
         time_counter += 50
         time.sleep(.05)
