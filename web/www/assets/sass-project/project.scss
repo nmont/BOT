@@ -20,5 +20,10 @@
 	}
 
 	.page-brand .content-heading {
-		background-image: url(#{$css-path}/images/bg/brand.jpg);
+		background-color: $brand-color;
+	}
+
+	.content {
+		position: relative;
+		top: $header-height;
 	}

@@ -1,0 +1,19 @@
+{
+  "on_right": false,
+  "right_bumper": {
+    "on_right": false,
+    "right_bumper": null,
+    "on_left": false,
+    "left_bumper": null,
+    "main_list": [13]
+  },
+  "on_left": false,
+  "left_bumper": {
+    "on_right": false,
+    "right_bumper": null,
+    "on_left": false,
+    "left_bumper": null,
+    "main_list": [4, 3]
+  },
+  "main_list": [1, 6, 5]
+}

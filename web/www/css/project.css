@@ -10,5 +10,10 @@ body {
 }
 
 .page-brand .content-heading {
-  background-image: url(./images/bg/brand.jpg);
+  background-color: #3f51b5;
+}
+
+.content {
+  position: relative;
+  top: 56px;
 }

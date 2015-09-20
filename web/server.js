@@ -5,7 +5,7 @@ var app = express();
 app.use(express.static('www'));
 
 app.get('/data', function(req, res) {
-  var content = fs.readFileSync("data.json");
+  var content = fs.readFileSync("./sample.json");
   console.log(content);
   var jsoncontent = JSON.parse(content);
   console.log(jsoncontent);
