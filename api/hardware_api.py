@@ -145,6 +145,7 @@ def dance():
     return api.SUCCESS
 
 def turn_left():
+    print 'turning left'
     # Left wheel backward
     GPIO.output(api.WHEEL_AB, True)
     GPIO.output(api.WHEEL_AA, False)
