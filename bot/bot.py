@@ -23,15 +23,18 @@ def bumper(instructions):
             break
         interrupt = api.do_instruction(instruction_id)
         if interrupt == api.GO_BUTTON_INTERRUPT:
+            # Restart Program
             instruction_counter = 0
             continue
+        elif interrupt == api.SWITCH_STATE_INTERRUPT:
+            # Switch state
+            break
         elif interrupt == api.LEFT_BUMPER_INTERRUPT and instructions.left_bumper is not None:
             bumper(instructions.left_bumper)
         elif interrupt == api.RIGHT_BUMPER_INTERRUPT and instructions.right_bumper is not None:
             bumper(instructions.right_bumper)
         else:
             instruction_counter += 1
-
 
 def record():
     GPIO.output(api.RED_LED_ID, True)
