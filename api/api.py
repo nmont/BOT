@@ -145,8 +145,8 @@ def instruction_list_to_json(instructions):
 
 
 def encode_instruction_list(instructions):
-    for instruction in instructions.main_list:
-        instruction = encode_instruction(instruction)
+    for i in xrange(len(instructions.main_list)):
+        instructions.main_list[i] = encode_instruction(instructions.main_list[i])
     if instructions.left_bumper is not None:
         instructions.left_bumper = encode_instruction_list(instructions.left_bumper)
     if instructions.right_bumper is not None:
@@ -155,8 +155,8 @@ def encode_instruction_list(instructions):
 
 
 def decode_instruction_list(instructions):
-    for instruction in instructions.main_list:
-        instruction = decode_instruction(instruction)
+    for i in xrange(len(instructions.main_list)):
+        instructions.main_list[i] = decode_instruction(instructions.main_list[i])
     if instructions.left_bumper is not None:
         instructions.left_bumper = decode_instruction(instructions.left_bumper)
     if instructions.right_bumper is not None:
