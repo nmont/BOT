@@ -76,7 +76,7 @@ def record():
 
 
 def play():
-    GPIO.output(api.PROGRAMV_BUZZER_ID, True)
+    GPIO.output(api.PROGRAM_BUZZER_ID, True)
     time.sleep(.3)
     GPIO.output(api.PROGRAM_BUZZER_ID, False)
 
