@@ -156,13 +156,14 @@ def turn_left():
 
 def turn_right():
 
+    print 'turning right'
     # Left wheel forward
-    GPIO.output(api.WHEEL_AB, True)
-    GPIO.output(api.WHEEL_AA, False)
-
-    # Right wheel backward
     GPIO.output(api.WHEEL_BA, True)
     GPIO.output(api.WHEEL_BB, False)
+
+    # Right wheel backward
+    GPIO.output(api.WHEEL_AB, False)
+    GPIO.output(api.WHEEL_AA, True)
 
 def stop_wheels():
     # stop all wheels
