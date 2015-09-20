@@ -56,6 +56,7 @@ BLUE = (0, 0, 4095)
 PROGRAM_LED_ID = 0
 INSTRUCTION_LED_ID = 1
 
+
 # Takes in string file name
 # outputs fulled constructed instruction list
 def json_dict_to_instruction_list(json_dict):
@@ -67,17 +68,99 @@ def json_dict_to_instruction_list(json_dict):
             instructions.__dict__[key] = json_dict_to_instruction_list(val)
         else:
             instructions.__dict__[key] = val
+    decode_instruction_list(instructions)
     return instructions
 
 
-# TODO - Implement lookup for instruction numbers
-def parse_instruction(nfc):
-    instruction = int(nfc,16)
-    return instruction
+def encode_instruction(nfc):
+    if nfc == MOVE_FORWARD1 or nfc == MOVE_FORWARD2:
+        return 1
+    elif nfc == PIVOT_LEFT:
+        return 2
+    elif nfc == PIVOT_RIGHT:
+        return 3
+    elif nfc == MOVE_BACKWARDS1 or nfc == MOVE_BACKWARDS2:
+        return 4
+    elif nfc == BEEP:
+        return 5
+    elif nfc == HALT_1S:
+        return 6
+    elif nfc == LED:
+        return 7
+    elif nfc == DANCE:
+        return 8
+    elif nfc == LEFT_BUMPER_START:
+        return 9
+    elif nfc == LEFT_BUMPER_END:
+        return 10
+    elif nfc == RIGHT_BUMPER_START:
+        return 11
+    elif nfc == RIGHT_BUMPER_END:
+        return 12
+    elif nfc == GOTO_START:
+        return 13
+    elif nfc == DONE:
+        return 14
+    else:
+        return -1
+
+
+def decode_instruction(instruction_id):
+    if instruction_id == 1:
+        return MOVE_FORWARD1
+    elif instruction_id == 2:
+        return PIVOT_LEFT
+    elif instruction_id == 3:
+        return PIVOT_RIGHT
+    elif instruction_id == 4:
+        return MOVE_BACKWARDS1
+    elif instruction_id == 5:
+        return BEEP
+    elif instruction_id == 6:
+        return HALT_1S
+    elif instruction_id == 7:
+        return LED
+    elif instruction_id == 8:
+        return DANCE
+    elif instruction_id == 9:
+        return LEFT_BUMPER_START
+    elif instruction_id == 10:
+        return LEFT_BUMPER_END
+    elif instruction_id == 11:
+        return RIGHT_BUMPER_START
+    elif instruction_id == 12:
+        return RIGHT_BUMPER_END
+    elif instruction_id == 13:
+        return GOTO_START
+    elif instruction_id == 14:
+        return DONE
+    else:
+        return -1
 
 
 def instruction_list_to_json(instructions):
-    return json.dumps(instructions, cls=InstructionListEncoder)
+    encode_instruction_list(instructions)
+    output_string = json.dumps(instructions, cls=InstructionListEncoder)
+    decode_instruction_list(instructions)
+    return output_string
+
+
+def encode_instruction_list(instructions):
+    for instruction in instructions.main_list:
+        instruction = encode_instruction(instruction)
+    if instructions.left_bumper is not None:
+        encode_instruction_list(instructions.left_bumper)
+    if instructions.right_bumper is not None:
+        encode_instruction_list(instructions.right_bumper)
+
+
+def decode_instruction_list(instructions):
+    for instruction in instructions.main_list:
+        instruction = decode_instruction(instruction)
+    if instructions.left_bumper is not None:
+        encode_instruction_list(instructions.left_bumper)
+    if instructions.right_bumper is not None:
+        encode_instruction_list(instructions.right_bumper)
 
 
 class InstructionListEncoder(json.JSONEncoder):
@@ -86,52 +169,6 @@ class InstructionListEncoder(json.JSONEncoder):
             return super(InstructionListEncoder, self).default(o)
         else:
             return o.__dict__
-
-
-# TODO - Read in state
-def read_gpio(gpio_id):
-    return 1
-
-
-# TODO - Set state
-def set_gpio(gpio_id):
-    return 1
-
-
-# TODO - Set LED based off of ID and RGB combination
-def set_led(led_id, color):
-    # Open up i2c com with pwm driver
-
-
-    # set R led_id low start address to 0
-    # set R led_id high start address to 0
-    # set G led_id low start address to 0
-    # set G led_id high start address to 0
-    # set B led_id low start address to 0
-    # set B led_id high start address to 0
-
-    # set R led_id low end address to color[0] & 0x0FF
-    # set R led_id high end address to (color[0] >> 8) & 0x0F
-
-    # set G led_id low end address to color[1] & 0x0FF
-    # set G led_id high end address to (color[1] >> 8) & 0x0F
-
-    # set B led_id low end address to color[2] & 0x0FF
-    # set B led_id high end address to (color[2] >> 8) & 0x0F
-
-    # close i2c com
-
-    return 1
-
-
-# TODO - Asynchronously read a value from NFC
-def read_nfc():
-    return None
-
-
-# TODO - Decode instruction to its rgb tuple
-def instruction_to_color(instruction_id):
-    return 1
 
 
 # TODO - Determine what to do based off instruction id
