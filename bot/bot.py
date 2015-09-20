@@ -101,6 +101,8 @@ def play():
         interrupt = api.do_instruction(instruction_id)
         if interrupt == api.GO_BUTTON_INTERRUPT:
             if GPIO.input(api.GO_BUTTON_ID):
+                break
+            else:
                 instruction_counter = 0
                 continue
         elif interrupt == api.LEFT_BUMPER_INTERRUPT and instructions.left_bumper is not None:
