@@ -58,21 +58,21 @@ def move(direction, move_time):
 
     if direction == 'forward':
 
-        # Left wheel backward
+        # Right wheel forward
         GPIO.output(api.WHEEL_AB, True)
         GPIO.output(api.WHEEL_AA, False)
 
-        # Right wheel backward
+        # Left wheel forward
         GPIO.output(api.WHEEL_BA, True)
         GPIO.output(api.WHEEL_BB, False)
 
     if direction == 'backward':
 
-        # Left wheel forward
+        # Right wheel backward
         GPIO.output(api.WHEEL_AB, False)
         GPIO.output(api.WHEEL_AA, True)
 
-        # Right wheel forward
+        # Left wheel backward
         GPIO.output(api.WHEEL_BA, False)
         GPIO.output(api.WHEEL_BB, True)
 
@@ -146,13 +146,13 @@ def dance():
 
 def turn_left():
     print 'turning left'
-    # Left wheel forward
+    # Left wheel backward
+    GPIO.output(api.WHEEL_BA, False)
+    GPIO.output(api.WHEEL_BB, True)
+
+    # Right wheel forward
     GPIO.output(api.WHEEL_AB, True)
     GPIO.output(api.WHEEL_AA, False)
-
-    # Right wheel backward
-    GPIO.output(api.WHEEL_BA, True)
-    GPIO.output(api.WHEEL_BB, False)
 
 def turn_right():
 
