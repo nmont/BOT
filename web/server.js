@@ -6,9 +6,7 @@ app.use(express.static('www'));
 
 app.get('/data', function(req, res) {
   var content = fs.readFileSync("../bot/instructions.json");
-  console.log(content);
   var jsoncontent = JSON.parse(content);
-  console.log(jsoncontent);
   res.json(jsoncontent);
 });
 

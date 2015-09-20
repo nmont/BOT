@@ -130,25 +130,25 @@ var cardAPI = (function () {
 					$('#cards').append($(element).fadeIn('slow'));
 				});
 			} else if (key === 'left_bumper' && val && typeof val === 'object') {
-				data = getCardInfo(7);
-				data.bump = side || '';
-				data.levl = level || 0;
-				element = cardTemplate(data);
-				$('#cards').append($(element).fadeIn('slow'));
-				jsonToCards(val, level + 1, side + 'L');
-				data = getCardInfo(8);
-				data.bump = side || '';
-				data.levl = level || 0;
-				element = cardTemplate(data);
-				$('#cards').delay(500*(1+level)).append($(element).fadeIn('slow'));
-			} else if (key === 'right_bumper' && val && typeof val === 'object') {
 				data = getCardInfo(9);
 				data.bump = side || '';
 				data.levl = level || 0;
 				element = cardTemplate(data);
 				$('#cards').append($(element).fadeIn('slow'));
-				jsonToCards(val, level + 1, side + 'R');
+				jsonToCards(val, level + 1, side + 'L');
 				data = getCardInfo(10);
+				data.bump = side || '';
+				data.levl = level || 0;
+				element = cardTemplate(data);
+				$('#cards').delay(500*(1+level)).append($(element).fadeIn('slow'));
+			} else if (key === 'right_bumper' && val && typeof val === 'object') {
+				data = getCardInfo(11);
+				data.bump = side || '';
+				data.levl = level || 0;
+				element = cardTemplate(data);
+				$('#cards').append($(element).fadeIn('slow'));
+				jsonToCards(val, level + 1, side + 'R');
+				data = getCardInfo(12);
 				data.bump = side || '';
 				data.levl = level || 0;
 				element = cardTemplate(data);
