@@ -146,11 +146,11 @@ def dance():
 
 def turn_left():
     print 'turning left'
-    # Left wheel backward
+    # Left wheel forward
     GPIO.output(api.WHEEL_AB, True)
     GPIO.output(api.WHEEL_AA, False)
 
-    # Right wheel forward
+    # Right wheel backward
     GPIO.output(api.WHEEL_BA, True)
     GPIO.output(api.WHEEL_BB, False)
 
