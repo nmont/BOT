@@ -150,7 +150,7 @@ def do_instruction(instruction_id):
         time.sleep(1)
         return SUCCESS
     elif instruction_id == LED:
-        hardware_api.blink()
+        hardware_api.blink_rainbow()
         return SUCCESS
     elif instruction_id == DANCE:
         hardware_api.dance()
