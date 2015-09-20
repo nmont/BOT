@@ -108,7 +108,7 @@ def get_nfc():
         return None
 
 def beep():
-    GPIO.output(api.PROGRAMV_BUZZER_ID, True)
+    GPIO.output(api.PROGRAM_BUZZER_ID, True)
     time.sleep(.3)
     GPIO.output(api.PROGRAM_BUZZER_ID, False)
     return api.SUCCESS
