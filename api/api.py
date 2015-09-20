@@ -158,9 +158,11 @@ def decode_instruction_list(instructions):
     for i in xrange(len(instructions.main_list)):
         instructions.main_list[i] = decode_instruction(instructions.main_list[i])
     if instructions.left_bumper is not None:
-        instructions.left_bumper = decode_instruction(instructions.left_bumper)
+        instructions.left_bumper = decode_instruction_list(instructions.left_bumper)
+        print instructions.left_bumper
     if instructions.right_bumper is not None:
-        instructions.right_bumper = decode_instruction(instructions.right_bumper)
+        instructions.right_bumper = decode_instruction_list(instructions.right_bumper)
+        print instructions.right_bumper
     return instructions
 
 class InstructionListEncoder(json.JSONEncoder):
@@ -174,13 +176,13 @@ class InstructionListEncoder(json.JSONEncoder):
 # TODO - Determine what to do based off instruction id
 def do_instruction(instruction_id):
     if instruction_id == MOVE_FORWARD1 or instruction_id == MOVE_FORWARD2:
-        return hardware_api.move('forward', 150)
+        return hardware_api.move('forward', 250)
     elif instruction_id == PIVOT_LEFT:
         return hardware_api.move('left', 150)
     elif instruction_id == PIVOT_RIGHT:
         return hardware_api.move('right', 500)
     elif instruction_id == MOVE_BACKWARDS1 or instruction_id == MOVE_BACKWARDS2:
-        return hardware_api.move('backward', 500)
+        return hardware_api.move('backward', 250)
     elif instruction_id == BEEP:
         return hardware_api.beep()
     elif instruction_id == HALT_1S:
