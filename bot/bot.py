@@ -105,7 +105,7 @@ def play():
             # Restart Program
             instruction_counter = 0
             continue
-        elif interrupt == api.SWITCH_STATE_ID:
+        elif interrupt == api.SWITCH_STATE_INTERRUPT:
             # Switch state
             break
         elif interrupt == api.LEFT_BUMPER_INTERRUPT and instructions.left_bumper is not None:
