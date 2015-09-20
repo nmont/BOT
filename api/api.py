@@ -68,8 +68,7 @@ def json_dict_to_instruction_list(json_dict):
             instructions.__dict__[key] = json_dict_to_instruction_list(val)
         else:
             instructions.__dict__[key] = val
-    decode_instruction_list(instructions)
-    return instructions
+    return decode_instruction_list(instructions)
 
 
 def encode_instruction(nfc):
@@ -139,29 +138,30 @@ def decode_instruction(instruction_id):
 
 
 def instruction_list_to_json(instructions):
-    encode_instruction_list(instructions)
+    instructions = encode_instruction_list(instructions)
     output_string = json.dumps(instructions, cls=InstructionListEncoder)
     decode_instruction_list(instructions)
     return output_string
 
 
 def encode_instruction_list(instructions):
-    for instruction in instructions.main_list:
-        instruction = encode_instruction(instruction)
+    for i in xrange(len(instructions.main_list)):
+        instructions.main_list[i] = encode_instruction(instructions.main_list[i])
     if instructions.left_bumper is not None:
-        encode_instruction_list(instructions.left_bumper)
+        instructions.left_bumper = encode_instruction_list(instructions.left_bumper)
     if instructions.right_bumper is not None:
-        encode_instruction_list(instructions.right_bumper)
+        instructions.right_bumper = encode_instruction_list(instructions.right_bumper)
+    return instructions
 
 
 def decode_instruction_list(instructions):
-    for instruction in instructions.main_list:
-        instruction = decode_instruction(instruction)
+    for i in xrange(len(instructions.main_list)):
+        instructions.main_list[i] = decode_instruction(instructions.main_list[i])
     if instructions.left_bumper is not None:
-        encode_instruction_list(instructions.left_bumper)
+        instructions.left_bumper = decode_instruction(instructions.left_bumper)
     if instructions.right_bumper is not None:
-        encode_instruction_list(instructions.right_bumper)
-
+        instructions.right_bumper = decode_instruction(instructions.right_bumper)
+    return instructions
 
 class InstructionListEncoder(json.JSONEncoder):
     def default(self, o):

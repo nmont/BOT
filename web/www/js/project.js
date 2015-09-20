@@ -47,8 +47,39 @@
 	});
 
 	// B.O.T. Cards
-	$.getJSON('/data', function(data) {
-		cardAPI.jsonToCards(data);
+	function updateCards() {
+		$.getJSON('/data', function(data) {
+			var cardElements = cardAPI.jsonToCards(data);
+			_.forEach(cardElements, function (value, index) {
+				console.log(index,value);
+				$('#cards').delay(500 * index).append(value);
+			});
+		});
+	}
+	window.updateCards = updateCards;
+
+	function clearCards() {
+		var cards = $('#cards').children();
+		cards.each(function (index) {
+			$(this).delay(100 * index).animate({left: window.innerWidth + 20, opacity: 0}, 'slow', function () {
+				$(this).remove();
+			});
+		});
+	}
+	window.clearCards = clearCards;
+
+	$('#update-cards').on('click', function () {
+		updateCards();
+		$('body').toast({
+			content: 'Cards updated from the saved file'
+		});
+	});
+
+	$('#clear-cards').on('click', function () {
+		clearCards();
+		$('body').toast({
+			content: 'Cards cleared'
+		});
 	});
 
 })(jQuery);
