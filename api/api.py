@@ -139,7 +139,7 @@ def decode_instruction(instruction_id):
     elif instruction_id == 14:
         return DONE
     else:
-        traceback.print_exc(file=sys.stdout)
+        traceback.print_stack()
         return -1
 
 
