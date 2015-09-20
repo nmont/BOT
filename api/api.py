@@ -174,13 +174,13 @@ class InstructionListEncoder(json.JSONEncoder):
 # TODO - Determine what to do based off instruction id
 def do_instruction(instruction_id):
     if instruction_id == MOVE_FORWARD1 or instruction_id == MOVE_FORWARD2:
-        return hardware_api.move('forward', 1000)
+        return hardware_api.move('forward', 150)
     elif instruction_id == PIVOT_LEFT:
-        return hardware_api.move('left', 1000)
+        return hardware_api.move('left', 150)
     elif instruction_id == PIVOT_RIGHT:
-        return hardware_api.move('right', 1000)
+        return hardware_api.move('right', 500)
     elif instruction_id == MOVE_BACKWARDS1 or instruction_id == MOVE_BACKWARDS2:
-        return hardware_api.move('backward', 1000)
+        return hardware_api.move('backward', 500)
     elif instruction_id == BEEP:
         return hardware_api.beep()
     elif instruction_id == HALT_1S:
