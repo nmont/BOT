@@ -10,6 +10,7 @@ import InstructionList
 import RPi.GPIO as GPIO
 import time
 
+
 def bumper(instructions):
     print "Bumper"
     instruction_counter = 0
