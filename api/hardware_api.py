@@ -76,7 +76,7 @@ def move(direction, move_time):
         GPIO.output(api.WHEEL_BA, False)
         GPIO.output(api.WHEEL_BB, True)
 
-    if direction == 'Right':
+    if direction == 'right':
         turn_right()
 
     if direction == 'left':
