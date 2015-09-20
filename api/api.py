@@ -3,6 +3,7 @@ __author__ = 'Ben Williams'
 import InstructionList
 import json
 import hardware_api
+import time
 
 # Dependencies on Raspberry pi
 import RPi.GPIO as GPIO
