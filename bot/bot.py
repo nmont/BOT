@@ -94,17 +94,20 @@ def play():
         instruction_id = instructions.main_list[instruction_counter]
         print instruction_id, instruction_counter
         if instruction_id == api.GOTO_START:
+            if GPIO.input(api.PROGRAM_SWITCH_ID):
+                break
             instruction_counter = 0
             continue
         elif instruction_id == api.DONE:
             break
         interrupt = api.do_instruction(instruction_id)
         if interrupt == api.GO_BUTTON_INTERRUPT:
-            if GPIO.input(api.GO_BUTTON_ID):
-                break
-            else:
-                instruction_counter = 0
-                continue
+            # Restart Program
+            instruction_counter = 0
+            continue
+        elif interrupt == api.SWITCH_STATE_ID:
+            # Switch state
+            break
         elif interrupt == api.LEFT_BUMPER_INTERRUPT and instructions.left_bumper is not None:
             bumper(instructions.left_bumper)
         elif interrupt == api.RIGHT_BUMPER_INTERRUPT and instructions.right_bumper is not None:
