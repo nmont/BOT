@@ -6,5 +6,6 @@
 
 Robot that teaches basics of programming to kids through a Raspberry Pi robot
 
+[Devpost Submission](http://devpost.com/software/bot-8qec9n)
 
-
+[Simple Video Demonstration](https://www.youtube.com/watch?v=_qIEhi0IRPA)
